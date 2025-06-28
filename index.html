@@ -2,146 +2,1465 @@
 <html lang="sr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Engleski za putovanja</title>
-  <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Aplikacija za učenje engleskog jezika namenjena putnicima - PutujGovori">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="PutujGovori">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="msapplication-TileColor" content="#6366f1">
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <title>PutujGovori - English Learning App</title>
+  
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
-      background: #f9fafb;
-      color: #111827;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
     header {
-      background: #4f46e5;
-      color: white;
-      padding: 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      color: #1f2937;
+      padding: 1rem 1.5rem;
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 2rem;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .container {
-      max-width: 900px;
-      margin: 1rem auto;
-      padding: 0 1rem;
+
+    .header-title {
+      margin-bottom: 0.5rem;
     }
-    .lesson {
-      background: white;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .lesson:hover {
-      background: #eef;
-    }
-    .phrases {
-      display: none;
-      margin-top: 1rem;
-    }
-    .phrase {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #ddd;
-    }
-    .phrase:last-child {
-      border-bottom: none;
-    }
-    .quiz-btn {
-      margin-top: 0.5rem;
-      padding: 0.4rem 0.8rem;
-      background: #10b981;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+
+    .header-progress {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
       font-size: 0.9rem;
+      font-weight: 600;
+      color: #6366f1;
+      background: rgba(99, 102, 241, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      margin: 0 auto;
+      max-width: 200px;
     }
-    .listen-btn {
-      background: #3b82f6;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 0.3rem 0.6rem;
-      margin-top: 5px;
-      font-size: 0.8rem;
-      cursor: pointer;
-    }
-    .progress {
-      text-align: center;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-    .bar {
-      height: 10px;
-      background: #ddd;
-      margin: 0.5rem 0;
-      border-radius: 5px;
+
+    .header-progress-bar {
+      width: 60px;
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 3px;
       overflow: hidden;
     }
+
+    .header-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      width: 0%;
+      transition: width 0.8s ease-in-out;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .progress {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .progress h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #374151;
+    }
+
+    .progress-text {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #6366f1;
+      margin-bottom: 1rem;
+    }
+
+    .bar {
+      height: 12px;
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
     .bar-inner {
       height: 100%;
-      background: #4f46e5;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
       width: 0%;
+      border-radius: 10px;
+      transition: width 0.8s ease-in-out;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+    }
+
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .lesson {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lesson::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .lesson:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .lesson:hover::before {
+      transform: scaleX(1);
+    }
+
+    .lesson h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lesson h3::before {
+      content: '📚';
+      font-size: 1.2rem;
+    }
+
+    .phrases {
+      display: none;
+      margin-top: 1.5rem;
+      animation: slideDown 0.3s ease-out;
+      padding: 0.5rem;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phrase {
+      background: #f8fafc;
+      padding: 2rem;
+      margin: 1rem 0;
+      border-radius: 16px;
+      border-left: 4px solid #6366f1;
+      transition: all 0.3s ease;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .phrase:hover {
+      background: #f1f5f9;
+      transform: translateX(4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .phrase strong {
+      color: #1e40af;
+      font-size: 1.3rem;
+      display: block;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .phrase div {
+      color: #374151;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .phrase em {
+      color: #6b7280;
+      font-style: normal;
+      font-size: 1rem;
+      display: block;
+      margin-top: 0.8rem;
+      font-weight: 500;
+      background: rgba(99, 102, 241, 0.1);
+      padding: 0.5rem;
+      border-radius: 8px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: fit-content;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    
+    .listen-btn, .btn {
+      transition: all 0.3s ease;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+    }
+    
+    .listen-btn {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+    }
+    
+    .speech-modal {
+      animation: modalSlideIn 0.3s ease-out;
+      border-radius: 20px !important;
+      border: 2px solid rgba(99, 102, 241, 0.2) !important;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+      background: white !important;
+      max-width: 600px !important;
+      width: 90vw !important;
+    }
+    
+    .speech-modal h3 {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      margin: -2rem -2rem 1rem -2rem;
+      padding: 1.5rem 2rem;
+      border-radius: 18px 18px 0 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    .speech-modal #recognition-result {
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9) !important;
+      border: 2px solid #e2e8f0 !important;
+      border-radius: 12px !important;
+      padding: 1.5rem !important;
+      margin: 1rem 0 !important;
+      min-height: 80px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .speech-modal button {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+      color: white !important;
+      border: none !important;
+      padding: 0.8rem 1.5rem !important;
+      border-radius: 12px !important;
+      cursor: pointer !important;
+      font-weight: 600 !important;
+      font-size: 0.95rem !important;
+      transition: all 0.3s ease !important;
+      margin: 0.5rem !important;
+      min-width: 120px !important;
+    }
+    
+    .speech-modal button:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3) !important;
+    }
+    
+    .speech-modal button[onclick*="remove"] {
+      background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    }
+    
+    .speech-modal button[onclick*="remove"]:hover {
+      box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3) !important;
+    }
+
+    .quiz-btn {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      margin-top: 1rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .quiz-btn:hover {
+      background: linear-gradient(135deg, #059669, #047857);
+    }
+
+    .quiz-container {
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-top: 1rem;
+      border: 2px solid #e2e8f0;
+      position: relative;
+    }
+
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .quiz-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .quiz-progress {
+      background: #e5e7eb;
+      border-radius: 10px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .quiz-question {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      padding: 1rem;
+      background: white;
+      border-radius: 12px;
+      border: 2px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .quiz-options {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .quiz-option {
+      background: white;
+      border: 2px solid #e2e8f0;
+      padding: 1.2rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      font-size: 1rem;
+      text-align: left;
+      position: relative;
+    }
+
+    .quiz-option:hover {
+      border-color: #6366f1;
+      background: #f8fafc;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .quiz-option:active {
+      transform: translateY(0);
+    }
+
+    .quiz-option.correct {
+      border-color: #10b981;
+      background: #f0fdf4;
+      color: #065f46;
+    }
+
+    .quiz-option.incorrect {
+      border-color: #ef4444;
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    .quiz-option.selected {
+      border-color: #6366f1;
+      background: #eff6ff;
+      color: #1e40af;
+    }
+
+    .quiz-result {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 15px;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .quiz-result.excellent {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 2px solid #10b981;
+      color: #065f46;
+    }
+
+    .quiz-result.good {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      color: #92400e;
+    }
+
+    .quiz-result.poor {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border: 2px solid #ef4444;
+      color: #991b1b;
+    }
+
+    .quiz-feedback {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .quiz-close-btn {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .quiz-close-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: modalSlideIn 0.3s ease-out;
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 2px solid #e5e7eb;
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .modal-close {
+      background: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: #dc2626;
+      transform: scale(1.1);
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Responsive design for lesson cards */
+    @media (max-width: 768px) {
+      .modal-content {
+        margin: 1rem;
+        max-width: calc(100vw - 2rem);
+        max-height: calc(100vh - 2rem);
+      }
+      
+      .speech-modal {
+        max-width: calc(100vw - 2rem) !important;
+        width: calc(100vw - 2rem) !important;
+        margin: 1rem !important;
+      }
+      
+      .modal-body {
+        padding: 1.5rem;
+      }
+      
+      .modal-header {
+        padding: 1rem 1.5rem;
+      }
+      
+      .container {
+        padding: 0 1rem;
+        margin: 1rem auto;
+      }
+      
+      .lessons-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        padding: 0.5rem !important;
+      }
+      
+      header {
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
+      
+      .lesson-card {
+        padding: 1rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+      .lesson-card h3 {
+        font-size: 1rem !important;
+      }
+      .lesson-card div {
+        font-size: 0.8rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .lessons-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+        padding: 0.5rem !important;
+      }
+      .lesson-card {
+        padding: 0.75rem !important;
+      }
+      .lesson-card h3 {
+        font-size: 0.9rem !important;
+      }
+      .lesson-card div {
+        font-size: 0.75rem !important;
+      }
+      
+      .speech-modal {
+        max-width: calc(100vw - 1rem) !important;
+        width: calc(100vw - 1rem) !important;
+        margin: 0.5rem !important;
+      }
+    }
+
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: #6b7280;
+      font-size: 1.1rem;
+    }
+
+    .loading::after {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #e5e7eb;
+      border-radius: 50%;
+      border-top-color: #6366f1;
+      animation: spin 1s ease-in-out infinite;
+      margin-left: 0.5rem;
+    }
+
+    .error {
+      text-align: center;
+      padding: 2rem;
+      color: #dc2626;
+      background: #fef2f2;
+      border-radius: 15px;
+      margin: 1rem 0;
+      border: 1px solid #fecaca;
+    }
+
+    .completed {
+      position: relative;
+    }
+
+    .completed::after {
+      content: '✅';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+    }
+
+    body.dark {
+      background: linear-gradient(135deg, #232946 0%, #121629 100%);
+      color: #f4f4f4;
+    }
+    body.dark header, body.dark .container, body.dark .progress, body.dark .lesson, body.dark .quiz-container, body.dark .modal-content {
+      background: rgba(30, 32, 48, 0.97) !important;
+      color: #f4f4f4 !important;
+      border-color: #232946 !important;
+    }
+    body.dark .lesson, body.dark .quiz-container, body.dark .modal-content {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+    }
+    body.dark .bar-inner {
+      background: linear-gradient(90deg, #818cf8, #a5b4fc);
+    }
+    body.dark .phrase {
+      background: #232946 !important;
+      color: #f4f4f4 !important;
+      border-left: 4px solid #818cf8;
+    }
+    body.dark .phrase em {
+      background: rgba(129, 140, 248, 0.15);
+      color: #a5b4fc;
+    }
+    body.dark .listen-btn, body.dark .quiz-btn, body.dark .quiz-close-btn {
+      background: linear-gradient(135deg, #818cf8, #6366f1) !important;
+      color: #fff !important;
+    }
+    body.dark .modal-header {
+      background: linear-gradient(135deg, #232946, #6366f1) !important;
+      color: #fff !important;
+    }
+    body.dark .quiz-option {
+      background: #232946 !important;
+      color: #f4f4f4 !important;
+      border-color: #6366f1 !important;
+    }
+    body.dark .quiz-option.correct {
+      background: #14532d !important;
+      color: #bbf7d0 !important;
+    }
+    body.dark .quiz-option.incorrect {
+      background: #7f1d1d !important;
+      color: #fecaca !important;
+    }
+    body.dark .quiz-result {
+      background: linear-gradient(135deg, #232946, #818cf8) !important;
+      color: #fff !important;
+    }
+    body.dark .error {
+      background: #7f1d1d !important;
+      color: #fecaca !important;
+      border-color: #fecaca !important;
+    }
+
+    body.dark .speech-modal {
+      background: #1e1b4b !important;
+      color: #f4f4f4 !important;
+      border: 1px solid #232946 !important;
+    }
+
+    body.dark .speech-modal #recognition-result {
+      background: #232946 !important;
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .menu-modal {
+      background: rgba(30, 32, 48, 0.97) !important;
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .menu-modal #menu-stats {
+      background: #232946 !important;
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .header-progress {
+      background: rgba(129, 140, 248, 0.15) !important;
+      color: #a5b4fc !important;
+      border-color: rgba(129, 140, 248, 0.3) !important;
+    }
+
+    body.dark .header-progress-bar {
+      background: #374151 !important;
+    }
+
+    body.dark .header-progress-fill {
+      background: linear-gradient(90deg, #818cf8, #a5b4fc) !important;
+    }
+
+    body.dark .lesson-card {
+      background: #232946 !important;
+      border-color: #374151 !important;
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .lesson-card:hover {
+      border-color: #6366f1 !important;
+      background: #1e1b4b !important;
+    }
+
+    body.dark .lesson-card h3 {
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .lesson-card div {
+      color: #a5b4fc !important;
+    }
+
+    body.dark .phrase {
+      background: #232946 !important;
+      border-color: #374151 !important;
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .phrase strong {
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .phrase div {
+      color: #d1d5db !important;
+    }
+
+    body.dark .phrase em {
+      color: #a5b4fc !important;
+    }
+
+    body.dark .modal-content {
+      background: #1e1b4b !important;
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .modal-header {
+      background: linear-gradient(135deg, #312e81, #1e1b4b) !important;
+      border-bottom-color: #374151 !important;
+    }
+
+    body.dark .modal-title {
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .modal-body {
+      background: #1e1b4b !important;
+    }
+
+    body.dark .phrase {
+      background: #232946 !important;
+      border-color: #374151 !important;
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .phrase strong {
+      color: #f4f4f4 !important;
+    }
+
+    body.dark .phrase div {
+      color: #d1d5db !important;
+    }
+
+    body.dark .phrase em {
+      color: #a5b4fc !important;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Splash Screen */
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .splash-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .splash-logo {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: logoBounce 2s ease-in-out infinite;
+    }
+
+    .splash-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .splash-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .splash-loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .splash-progress {
+      width: 200px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+
+    .splash-progress-bar {
+      height: 100%;
+      background: white;
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.3s ease;
+      animation: progressFill 2s ease-in-out;
+    }
+
+    @keyframes logoBounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @keyframes progressFill {
+      0% { width: 0%; }
+      50% { width: 70%; }
+      100% { width: 100%; }
+    }
+
+    /* Hide main content initially */
+    .main-content {
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+    }
+
+    .main-content.show {
+      opacity: 1;
+    }
+
+    body.dark .phrase em {
+      color: #a5b4fc !important;
+    }
+
+    body.dark .splash-screen {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%) !important;
+    }
+
+    body.dark .splash-title {
+      color: #f4f4f4 !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    body.dark .splash-subtitle {
+      color: rgba(244, 244, 244, 0.8) !important;
+    }
+    
+    body.dark #install-button {
+      background: linear-gradient(135deg, #818cf8, #6366f1) !important;
+      box-shadow: 0 8px 25px rgba(129, 140, 248, 0.3) !important;
+    }
+    
+    body.dark #install-button:hover {
+      box-shadow: 0 12px 35px rgba(129, 140, 248, 0.4) !important;
     }
   </style>
 </head>
 <body>
-<header>Engleski za putovanja</header>
-<div class="container">
-  <div class="progress">
-    Napredak: <span id="progress-text">0%</span>
-    <div class="bar"><div class="bar-inner" id="bar-inner"></div></div>
+  <!-- Splash Screen -->
+  <div class="splash-screen" id="splash-screen">
+    <div class="splash-logo">🌍</div>
+    <div class="splash-title">PutujGovori</div>
+    <div class="splash-subtitle">Učite engleski za putovanja</div>
+    <div class="splash-loader"></div>
+    <div class="splash-progress">
+      <div class="splash-progress-bar"></div>
+    </div>
   </div>
-  <div id="lessons"></div>
-</div>
 
-<script>
-function updateProgress(total) {
-  let done = 0;
-  for (let i = 0; i < total; i++) {
-    if (localStorage.getItem('lesson_' + i) === 'done') done++;
+  <!-- Main Content -->
+  <div class="main-content" id="main-content">
+    <header>
+      <div class="header-title">🌍 PutujGovori</div>
+      <div class="header-progress">
+        <span id="header-progress-text">0%</span>
+        <div class="header-progress-bar">
+          <div class="header-progress-fill" id="header-progress-fill"></div>
+        </div>
+      </div>
+      <button id="menu-btn" title="Meni" style="position:absolute;top:1rem;right:1.5rem;font-size:1.2rem;cursor:pointer;background:none;border:none;">☰</button>
+    </header>
+    <div class="container">
+      <div id="phrase-of-day" style="margin-bottom:2rem;text-align:center;"></div>
+      <div id="lessons">
+        <div class="loading">Učitavanje lekcija...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // PWA Installation functionality - moved to the beginning
+  let deferredPrompt;
+  
+  // Check installation status
+  function checkInstallationStatus() {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    const isHttps = location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    const hasServiceWorker = 'serviceWorker' in navigator;
+    
+    console.log('PWA Installation Status:');
+    console.log('- Is standalone:', isStandalone);
+    console.log('- Is HTTPS/localhost:', isHttps);
+    console.log('- Has service worker support:', hasServiceWorker);
+    console.log('- Protocol:', location.protocol);
+    console.log('- Hostname:', location.hostname);
+    
+    return {
+      isInstalled: isStandalone,
+      canInstall: isHttps && hasServiceWorker && !isStandalone,
+      reason: isStandalone ? 'already_installed' : 
+              !isHttps ? 'not_https' : 
+              !hasServiceWorker ? 'no_service_worker' : 'available'
+    };
   }
-  const percent = Math.round(done / total * 100);
-  document.getElementById('progress-text').innerText = percent + '%';
-  document.getElementById('bar-inner').style.width = percent + '%';
-}
-
-function speak(text) {
-  if (!('speechSynthesis' in window)) {
-    alert('Ova funkcija nije podržana.');
-    return;
+  
+  // Debug information
+  console.log('PWA Installation Debug:');
+  console.log('- Protocol:', location.protocol);
+  console.log('- Hostname:', location.hostname);
+  console.log('- Is HTTPS:', location.protocol === 'https:');
+  console.log('- Is localhost:', location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+  console.log('- Is standalone:', window.matchMedia('(display-mode: standalone)').matches);
+  console.log('- Navigator standalone:', window.navigator.standalone);
+  
+  // Check status on load
+  const installStatus = checkInstallationStatus();
+  if (installStatus.isInstalled) {
+    console.log('✅ App is already installed and running in standalone mode');
   }
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = 'en-US';
-  window.speechSynthesis.speak(utter);
-}
-
-function createLesson(index, lesson) {
-  const div = document.createElement('div');
-  div.className = 'lesson';
-  div.innerHTML = `<h3>${lesson.title}</h3><div class='phrases'></div>`;
-  const phrasesDiv = div.querySelector('.phrases');
-  lesson.phrases.forEach(p => {
-    const pDiv = document.createElement('div');
-    pDiv.className = 'phrase';
-    pDiv.innerHTML = `
-      <strong>${p.eng}</strong><br>
-      ${p.sr}<br>
-      <em>${p.pron}</em><br>
-      <button class='listen-btn' onclick="speak(JSON.parse(JSON.stringify('${p.eng}'))); event.stopPropagation()">Listen</button>
-    `;
-    phrasesDiv.appendChild(pDiv);
+  
+  // Listen for the beforeinstallprompt event
+  window.addEventListener('beforeinstallprompt', (e) => {
+    console.log('✅ beforeinstallprompt event fired - installation is available');
+    
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    
+    // Stash the event so it can be triggered later
+    deferredPrompt = e;
+    
+    // Don't show install button automatically - only in menu
+    console.log('Install prompt available - will show in menu only');
+    
+    // Update installation status if menu is open
+    updateInstallStatus();
   });
-  const quizBtn = document.createElement('button');
-  quizBtn.textContent = 'Kviz';
-  quizBtn.className = 'quiz-btn';
-  quizBtn.onclick = quizBtn.onclick = () => {
-    const quizContainer = document.createElement('div');
-    quizContainer.style.padding = '1rem';
-    quizContainer.style.background = '#f3f4f6';
-    quizContainer.style.borderRadius = '10px';
-    quizContainer.style.marginTop = '1rem';
+  
+  // Listen for when beforeinstallprompt doesn't fire (installation not available)
+  window.addEventListener('load', () => {
+    // Wait a bit to see if beforeinstallprompt fires
+    setTimeout(() => {
+      if (!deferredPrompt) {
+        const status = checkInstallationStatus();
+        if (!status.isInstalled) {
+          console.log('ℹ️ beforeinstallprompt did not fire - installation may not be available');
+          console.log('Installation status:', status);
+        }
+      }
+      
+      // Update installation status periodically
+      setInterval(() => {
+        updateInstallStatus();
+      }, 2000); // Check every 2 seconds
+    }, 1000);
+  });
+  
+  // Listen for successful installation
+  window.addEventListener('appinstalled', () => {
+    console.log('PWA was installed');
+    // Clear the deferredPrompt variable
+    deferredPrompt = null;
+    
+    // Update installation status if menu is open
+    updateInstallStatus();
+    
+    // Show success message
+    const successMsg = document.createElement('div');
+    successMsg.innerHTML = '✅ Aplikacija je uspešno instalirana!';
+    successMsg.style.cssText = `
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      background: #10b981;
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      z-index: 10001;
+      animation: slideIn 0.5s ease;
+    `;
+    document.body.appendChild(successMsg);
+    
+    // Remove success message after 3 seconds
+    setTimeout(() => {
+      successMsg.style.opacity = '0';
+      successMsg.style.transform = 'translateX(100%)';
+      setTimeout(() => {
+        document.body.removeChild(successMsg);
+      }, 300);
+    }, 3000);
+  });
+
+  // Register service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js')
+        .then(registration => {
+          console.log('ServiceWorker registered successfully');
+        })
+        .catch(error => {
+          console.log('ServiceWorker registration failed:', error);
+        });
+    });
+  }
+
+  function updateProgress(total) {
+    let done = 0;
+    for (let i = 0; i < total; i++) {
+      if (localStorage.getItem('lesson_' + i) === 'done') done++;
+    }
+    const percent = Math.round(done / total * 100);
+    
+    // Update header progress
+    document.getElementById('header-progress-text').innerText = percent + '%';
+    document.getElementById('header-progress-fill').style.width = percent + '%';
+  }
+
+  function speak(text) {
+    if (!('speechSynthesis' in window)) {
+      alert('Ova funkcija nije podržana u vašem browseru.');
+      return;
+    }
+    
+    try {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      utter.rate = 0.6;
+      utter.pitch = 1;
+      utter.volume = 1;
+      
+      utter.onerror = (event) => {
+        console.error('Speech synthesis error:', event);
+        alert('Greška pri reprodukciji zvuka.');
+      };
+      
+      window.speechSynthesis.speak(utter);
+    } catch (error) {
+      console.error('Speech synthesis error:', error);
+      alert('Greška pri reprodukciji zvuka.');
+    }
+  }
+
+  function createLesson(index, lesson) {
+    const div = document.createElement('div');
+    div.className = 'lesson-card';
+    div.style.cssText = `
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid #e5e7eb;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    `;
+    
+    // Check if lesson is completed
+    if (localStorage.getItem('lesson_' + index) === 'done') {
+      div.style.borderColor = '#10b981';
+      div.style.background = 'linear-gradient(135deg, #f0fdf4, #dcfce7)';
+    }
+    
+    div.onmouseenter = () => {
+      div.style.transform = 'translateY(-4px)';
+      div.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
+    };
+    
+    div.onmouseleave = () => {
+      div.style.transform = 'translateY(0)';
+      div.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.05)';
+    };
+    
+    // Create lesson icon and title
+    const icon = document.createElement('div');
+    icon.style.cssText = `
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    `;
+    
+    // Assign specific icons based on lesson title
+    const getLessonIcon = (title) => {
+      const titleLower = title.toLowerCase();
+      
+      if (titleLower.includes('pozdrav') || titleLower.includes('predstavljanje')) return '👋';
+      if (titleLower.includes('restoran') || titleLower.includes('restoranu')) return '🍽️';
+      if (titleLower.includes('aerodrom') || titleLower.includes('aerodromu')) return '✈️';
+      if (titleLower.includes('hotel') || titleLower.includes('hotelu')) return '🏨';
+      if (titleLower.includes('kupovina') || titleLower.includes('kupovini')) return '🛍️';
+      if (titleLower.includes('hitne') || titleLower.includes('situacije')) return '🚨';
+      if (titleLower.includes('prevoz') || titleLower.includes('transport')) return '🚌';
+      if (titleLower === 'brojevi i vreme') return '🕐';
+      if (titleLower === 'vremenske prilike') return '🌤️';
+      if (titleLower.includes('zdravlje') || titleLower.includes('zdravlja')) return '🏥';
+      if (titleLower.includes('pitanja') || titleLower.includes('postavljanje')) return '❓';
+      if (titleLower.includes('banka') || titleLower.includes('banci')) return '🏦';
+      if (titleLower.includes('prodavnica') || titleLower.includes('prodavnici')) return '🛒';
+      if (titleLower.includes('ulica') || titleLower.includes('ulici')) return '🗺️';
+      if (titleLower.includes('plaža') || titleLower.includes('plaži')) return '🏖️';
+      
+      // Fallback icons for other cases
+      return '📚';
+    };
+    
+    icon.textContent = getLessonIcon(lesson.title);
+    
+    const title = document.createElement('h3');
+    title.textContent = lesson.title;
+    title.style.cssText = `
+      margin: 0;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1f2937;
+    `;
+    
+    const phraseCount = document.createElement('div');
+    phraseCount.textContent = `${lesson.phrases.length} fraza`;
+    phraseCount.style.cssText = `
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    `;
+    
+    // Add completion indicator
+    if (localStorage.getItem('lesson_' + index) === 'done') {
+      const completed = document.createElement('div');
+      completed.innerHTML = '✅ Završeno';
+      completed.style.cssText = `
+        text-align: center;
+        color: #10b981;
+        font-weight: 600;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+      `;
+      div.appendChild(completed);
+    }
+    
+    div.appendChild(icon);
+    div.appendChild(title);
+    div.appendChild(phraseCount);
+    
+    // Click to open lesson modal
+    div.onclick = () => {
+      showLessonModal(index, lesson);
+    };
+    
+    document.querySelector('.lessons-grid').appendChild(div);
+  }
+
+  function showLessonModal(index, lesson) {
+    // Create modal overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    modalOverlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    `;
+
+    // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content';
+    modalContent.style.maxWidth = '600px';
+    modalContent.style.width = '90vw';
+    
+    // Create modal header
+    const modalHeader = document.createElement('div');
+    modalHeader.className = 'modal-header';
+    modalHeader.innerHTML = `
+      <div class="modal-title">${lesson.title}</div>
+      <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">×</button>
+    `;
+    
+    // Create modal body
+    const modalBody = document.createElement('div');
+    modalBody.className = 'modal-body';
+    
+    // Add phrases
+    lesson.phrases.forEach(p => {
+      const pDiv = document.createElement('div');
+      pDiv.className = 'phrase';
+      pDiv.style.cssText = `
+        background: #f9fafb;
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+      `;
+      
+      const engText = document.createElement('strong');
+      engText.textContent = p.eng;
+      engText.style.cssText = 'font-size: 1.1rem; color: #1f2937; display: block; margin-bottom: 0.5rem;';
+      
+      const srText = document.createElement('div');
+      srText.textContent = p.sr;
+      srText.style.cssText = 'color: #374151; margin-bottom: 0.5rem;';
+      
+      const pronText = document.createElement('em');
+      pronText.textContent = p.pron;
+      pronText.style.cssText = 'color: #6b7280; font-size: 0.9rem; display: block; margin-bottom: 1rem;';
+      
+      const buttonsDiv = document.createElement('div');
+      buttonsDiv.style.cssText = 'display: flex; gap: 0.5rem;';
+      
+      const listenBtn = document.createElement('button');
+      listenBtn.innerHTML = '🔊 Slušaj';
+      listenBtn.className = 'btn listen-btn';
+      listenBtn.style.cssText = 'flex: 1;';
+      listenBtn.onclick = (e) => {
+        e.stopPropagation();
+        speak(p.eng);
+      };
+      
+      const pronBtn = document.createElement('button');
+      pronBtn.innerHTML = '🎤 Proveri';
+      pronBtn.className = 'btn';
+      pronBtn.style.cssText = `
+        flex: 1;
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+      `;
+      pronBtn.onclick = (e) => {
+        e.stopPropagation();
+        checkPronunciation(p.eng);
+      };
+      
+      buttonsDiv.appendChild(listenBtn);
+      buttonsDiv.appendChild(pronBtn);
+      
+      pDiv.appendChild(engText);
+      pDiv.appendChild(srText);
+      pDiv.appendChild(pronText);
+      pDiv.appendChild(buttonsDiv);
+      modalBody.appendChild(pDiv);
+    });
+    
+    // Add quiz button
+    const quizBtn = document.createElement('button');
+    quizBtn.innerHTML = '🎯 Započni kviz';
+    quizBtn.className = 'btn quiz-btn';
+    quizBtn.style.cssText = `
+      width: 100%;
+      margin-top: 1rem;
+      padding: 1rem;
+      font-size: 1.1rem;
+    `;
+    quizBtn.onclick = (e) => {
+      e.stopPropagation();
+      modalOverlay.remove(); // Close lesson modal first
+      startQuiz(index, lesson); // Start quiz in new modal
+    };
+    
+    modalBody.appendChild(quizBtn);
+    
+    // Append header and body to modal content
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modalOverlay.appendChild(modalContent);
+    
+    // Close modal when clicking outside
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.remove();
+      }
+    });
+    
+    // Add modal to body
+    document.body.appendChild(modalOverlay);
+  }
+
+  function startQuiz(index, lesson) {
+    // Create modal overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    
+    // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content menu-modal';
+    modalContent.style.maxWidth = '400px';
+    
+    // Create modal header
+    const modalHeader = document.createElement('div');
+    modalHeader.className = 'modal-header';
+    modalHeader.innerHTML = `
+      <div class="modal-title">🎯 Kviz: ${lesson.title}</div>
+      <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">×</button>
+    `;
+    
+    // Create modal body
+    const modalBody = document.createElement('div');
+    modalBody.className = 'modal-body';
+    
+    // Append header and body to modal content
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modalOverlay.appendChild(modalContent);
+    
+    // Add modal to body
+    document.body.appendChild(modalOverlay);
+    
+    // Close modal when clicking outside
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.remove();
+      }
+    });
 
     let correct = 0;
     let current = 0;
@@ -151,11 +1470,46 @@ function createLesson(index, lesson) {
 
     function showQuestion() {
       if (current >= total) {
-        quizContainer.innerHTML = `<p>Rezultat: <strong>${correct}/${total}</strong></p>`;
+        const resultDiv = document.createElement('div');
+        resultDiv.className = 'quiz-result';
+        
+        // Determine result class based on score
         if (correct >= 4) {
+          resultDiv.classList.add('excellent');
+          resultDiv.innerHTML = `
+            🎉 Odlično! Rezultat: <strong>${correct}/${total}</strong>
+            <div class="quiz-feedback">Svaka čast! Uspešno ste završili lekciju.</div>
+          `;
           localStorage.setItem('lesson_' + index, 'done');
           updateProgress(lessonCount);
+          // Refresh the lesson card to show completion
+          location.reload();
+        } else if (correct >= 3) {
+          resultDiv.classList.add('good');
+          resultDiv.innerHTML = `
+            👍 Dobro! Rezultat: <strong>${correct}/${total}</strong>
+            <div class="quiz-feedback">Skoro ste uspeli! Pokušajte ponovo za bolji rezultat.</div>
+          `;
+        } else {
+          resultDiv.classList.add('poor');
+          resultDiv.innerHTML = `
+            😔 Rezultat: <strong>${correct}/${total}</strong>
+            <div class="quiz-feedback">Potrebno je više vežbanja. Pokušajte ponovo!</div>
+          `;
         }
+        
+        modalBody.innerHTML = '';
+        modalBody.appendChild(resultDiv);
+        
+        // Add close button
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = 'Zatvori kviz';
+        closeBtn.className = 'quiz-close-btn';
+        closeBtn.onclick = () => {
+          modalOverlay.remove();
+        };
+        modalBody.appendChild(closeBtn);
+        
         return;
       }
 
@@ -172,60 +1526,677 @@ function createLesson(index, lesson) {
       }
       answers.sort(() => Math.random() - 0.5);
 
-      quizContainer.innerHTML = `<p><strong>${q.eng}</strong></p>`;
+      modalBody.innerHTML = '';
+      
+      // Add quiz header with progress
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'quiz-header';
+      headerDiv.innerHTML = `
+        <div class="quiz-title">Pitanje ${current + 1} od ${total}</div>
+        <div class="quiz-progress">${correct} tačnih</div>
+      `;
+      modalBody.appendChild(headerDiv);
+      
+      const questionDiv = document.createElement('div');
+      questionDiv.className = 'quiz-question';
+      questionDiv.innerHTML = `<strong>${q.eng}</strong>`;
+      modalBody.appendChild(questionDiv);
+      
+      const optionsDiv = document.createElement('div');
+      optionsDiv.className = 'quiz-options';
+      
       answers.forEach(ans => {
         const btn = document.createElement('button');
         btn.textContent = ans;
-        btn.style.display = 'block';
-        btn.style.margin = '0.3rem 0';
-        btn.style.padding = '0.5rem';
-        btn.style.background = '#e5e7eb';
-        btn.style.border = 'none';
-        btn.style.borderRadius = '5px';
-        btn.style.cursor = 'pointer';
+        btn.className = 'quiz-option';
         btn.onclick = () => {
           if (ans === q.sr) {
             correct++;
-            btn.style.background = '#10b981';
-            btn.style.color = 'white';
+            btn.classList.add('correct');
           } else {
-            btn.style.background = '#ef4444';
-            btn.style.color = 'white';
+            btn.classList.add('incorrect');
           }
+          
+          // Disable all buttons and add disabled class
+          document.querySelectorAll('.quiz-option').forEach(option => {
+            option.classList.add('disabled');
+            option.style.pointerEvents = 'none';
+          });
+          
+          // Update progress in header
+          const progressDiv = modalBody.querySelector('.quiz-progress');
+          if (progressDiv) {
+            progressDiv.textContent = `${correct} tačnih`;
+          }
+          
           setTimeout(() => {
             current++;
             showQuestion();
-          }, 700);
+          }, 1500);
         };
-        quizContainer.appendChild(btn);
+        optionsDiv.appendChild(btn);
       });
+      
+      modalBody.appendChild(optionsDiv);
     }
 
-    phrasesDiv.appendChild(quizContainer);
     showQuestion();
+  }
+
+  let lessonCount = 0;
+
+  fetch('lessons.json?v=' + Date.now())
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then(data => {
+      lessonCount = data.length;
+      document.getElementById('lessons').innerHTML = '';
+      
+      const lessonsGrid = document.createElement('div');
+      lessonsGrid.className = 'lessons-grid';
+      lessonsGrid.style.cssText = `
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem;
+      `;
+      
+      document.getElementById('lessons').appendChild(lessonsGrid);
+      
+      data.forEach((lesson, i) => createLesson(i, lesson));
+      updateProgress(lessonCount);
+      showPhraseOfDay(data);
+    })
+    .catch(err => {
+      document.getElementById('lessons').innerHTML = '<div class="error">❌ Greška pri učitavanju lekcija. Molimo pokušajte ponovo.</div>';
+      console.error('Error loading lessons:', err);
+    });
+
+  // Menu modal functionality
+  function showMenu() {
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content menu-modal';
+    modalContent.style.maxWidth = '400px';
+    
+    const modalHeader = document.createElement('div');
+    modalHeader.className = 'modal-header';
+    modalHeader.innerHTML = `
+      <div class="modal-title">⚙️ Podešavanja</div>
+      <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">×</button>
+    `;
+    
+    const modalBody = document.createElement('div');
+    modalBody.className = 'modal-body';
+    modalBody.innerHTML = `
+      <div style="margin-bottom: 1.5rem;">
+        <h3 style="margin-bottom: 1rem;">🎨 Izgled</h3>
+        <button id="dark-mode-toggle" class="btn" style="width: 100%; margin-bottom: 0.5rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white;">
+          ${document.body.classList.contains('dark') ? '☀️ Svetli režim' : '🌙 Noćni režim'}
+        </button>
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <h3 style="margin-bottom: 1rem;">📊 Statistika</h3>
+        <div id="menu-stats" style="background: #f3f4f6; padding: 1rem; border-radius: 10px; text-align: center;">
+          <p><strong>Lekcija završeno:</strong> <span id="completed-lessons">0</span>/<span id="total-lessons">0</span></p>
+          <p><strong>Tačnost kvizova:</strong> <span id="quiz-accuracy">0%</span></p>
+        </div>
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <h3 style="margin-bottom: 1rem;">📱 Instalacija</h3>
+        <button id="show-install-btn" class="btn" style="width: 100%; margin-bottom: 0.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white;">
+          📱 Instaliraj aplikaciju
+        </button>
+        <div id="install-status" style="background: #f3f4f6; padding: 0.8rem; border-radius: 8px; text-align: center; font-size: 0.85rem; color: #6b7280;">
+          Proveravam status instalacije...
+        </div>
+        <p style="color: #6b7280; font-size: 0.8rem; text-align: center;">
+          Instalirajte aplikaciju za brži pristup i offline funkcionalnost
+        </p>
+      </div>
+      <div>
+        <h3 style="margin-bottom: 1rem;">ℹ️ O aplikaciji</h3>
+        <p style="color: #6b7280; font-size: 0.9rem;">
+          PutujGovori - Aplikacija za učenje engleskog jezika namenjena putnicima.
+          <br><br>
+          Verzija: 2.0<br>
+          PWA kompatibilna
+        </p>
+      </div>
+    `;
+    
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modalOverlay.appendChild(modalContent);
+    document.body.appendChild(modalOverlay);
+    
+    // Update stats in menu
+    updateMenuStats();
+    
+    // Update installation status in menu
+    updateInstallStatus();
+    
+    // Dark mode toggle in menu
+    document.getElementById('dark-mode-toggle').onclick = () => {
+      setDarkMode(!document.body.classList.contains('dark'));
+      document.getElementById('dark-mode-toggle').innerHTML = 
+        document.body.classList.contains('dark') ? '☀️ Svetli režim' : '🌙 Noćni režim';
+    };
+    
+    // Show install button from menu
+    document.getElementById('show-install-btn').onclick = () => {
+      modalOverlay.remove(); // Close menu first
+      
+      // Check installation status
+      const status = checkInstallationStatus();
+      
+      if (status.isInstalled) {
+        alert('✅ Aplikacija je već instalirana i pokrenuta kao standalone aplikacija!');
+        return;
+      }
+      
+      if (!status.canInstall) {
+        switch (status.reason) {
+          case 'not_https':
+            alert('⚠️ Instalacija zahteva HTTPS konekciju. Trenutno ste na: ' + location.protocol + '//' + location.hostname);
+            break;
+          case 'no_service_worker':
+            alert('❌ Instalacija nije podržana u vašem browseru. Pokušajte sa Chrome ili Edge.');
+            break;
+          default:
+            alert('ℹ️ Instalacija trenutno nije dostupna. Pokušajte ponovo kasnije.');
+        }
+        return;
+      }
+      
+      // Directly trigger install prompt
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
+      } else {
+        alert('ℹ️ Instalacija trenutno nije dostupna. Pokušajte:\n\n1. Osvežite stranicu\n2. Koristite Chrome ili Edge browser\n3. Sačekajte nekoliko sekundi i pokušajte ponovo');
+      }
+    };
+    
+    // Close modal when clicking outside
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.remove();
+      }
+    });
+  }
+
+  function updateMenuStats() {
+    const completed = Array.from({length: lessonCount}).filter((_,i)=>localStorage.getItem('lesson_'+i)==='done').length;
+    const quizData = JSON.parse(localStorage.getItem('quizStats')||'{}');
+    const totalAnswered = quizData.answered||0;
+    const totalCorrect = quizData.correct||0;
+    const accuracy = totalAnswered ? Math.round(100*totalCorrect/totalAnswered) : 0;
+    
+    if (document.getElementById('completed-lessons')) {
+      document.getElementById('completed-lessons').textContent = completed;
+      document.getElementById('total-lessons').textContent = lessonCount;
+      document.getElementById('quiz-accuracy').textContent = accuracy + '%';
+    }
+  }
+
+  function updateInstallStatus() {
+    const statusElement = document.getElementById('install-status');
+    if (!statusElement) return;
+    
+    const status = checkInstallationStatus();
+    
+    if (status.isInstalled) {
+      statusElement.innerHTML = '✅ <strong>Aplikacija je instalirana</strong><br>Pokrenuta kao standalone aplikacija';
+      statusElement.style.background = '#dcfce7';
+      statusElement.style.color = '#166534';
+    } else if (status.canInstall) {
+      if (deferredPrompt) {
+        statusElement.innerHTML = '📱 <strong>Instalacija dostupna</strong><br>Kliknite dugme iznad za instalaciju';
+        statusElement.style.background = '#dbeafe';
+        statusElement.style.color = '#1e40af';
+      } else {
+        statusElement.innerHTML = '⏳ <strong>Priprema instalacije</strong><br>Sačekajte nekoliko sekundi';
+        statusElement.style.background = '#fef3c7';
+        statusElement.style.color = '#92400e';
+      }
+    } else {
+      switch (status.reason) {
+        case 'not_https':
+          statusElement.innerHTML = '⚠️ <strong>HTTPS potreban</strong><br>Instalacija zahteva sigurnu konekciju';
+          statusElement.style.background = '#fef3c7';
+          statusElement.style.color = '#92400e';
+          break;
+        case 'no_service_worker':
+          statusElement.innerHTML = '❌ <strong>Browser ne podržava</strong><br>Koristite Chrome ili Edge';
+          statusElement.style.background = '#fee2e2';
+          statusElement.style.color = '#991b1b';
+          break;
+        default:
+          statusElement.innerHTML = 'ℹ️ <strong>Instalacija nedostupna</strong><br>Pokušajte ponovo kasnije';
+          statusElement.style.background = '#f3f4f6';
+          statusElement.style.color = '#6b7280';
+      }
+    }
+  }
+
+  // Dark mode logic
+  function setDarkMode(on) {
+    if (on) {
+      document.body.classList.add('dark');
+      localStorage.setItem('darkMode', '1');
+    } else {
+      document.body.classList.remove('dark');
+      localStorage.setItem('darkMode', '0');
+    }
+    
+    // Update install button styles for dark mode
+    const installButton = document.getElementById('install-button');
+    if (installButton) {
+      if (on) {
+        installButton.style.background = 'linear-gradient(135deg, #818cf8, #6366f1)';
+        installButton.style.boxShadow = '0 8px 25px rgba(129, 140, 248, 0.3)';
+      } else {
+        installButton.style.background = 'linear-gradient(135deg, #6366f1, #8b5cf6)';
+        installButton.style.boxShadow = '0 8px 25px rgba(99, 102, 241, 0.3)';
+      }
+    }
+  }
+
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  document.getElementById('menu-btn').onclick = () => {
+    showMenu();
   };
-  phrasesDiv.appendChild(quizBtn);
 
-  div.onclick = (e) => {
-    if (e.target.classList.contains('listen-btn') || e.target.classList.contains('quiz-btn')) return;
-    phrasesDiv.style.display = phrasesDiv.style.display === 'block' ? 'none' : 'block';
-  };
-  document.getElementById('lessons').appendChild(div);
-}
+  function showPhraseOfDay(lessons) {
+    console.log('Prikazujem frazu dana');
+    
+    const allPhrases = lessons.flatMap(l=>l.phrases.map(p=>({...p, lesson:l.title})));
+    const idx = Math.floor(Math.random()*allPhrases.length);
+    const p = allPhrases[idx];
+    
+    const phraseElement = document.getElementById('phrase-of-day');
+    const lessonsElement = document.getElementById('lessons');
+    
+    phraseElement.style.display = 'block';
+    lessonsElement.style.display = 'none'; // Sakrij lekcije kada je fraza dana aktivna
+    
+    phraseElement.innerHTML = `
+      <div class='phrase' style='display:inline-block;max-width:400px;position:relative;'>
+        <button onclick="closePhraseOfDay()" style="position:absolute;top:-10px;right:-10px;background:#ef4444;color:white;border:none;border-radius:50%;width:25px;height:25px;cursor:pointer;font-size:14px;font-weight:bold;box-shadow:0 2px 4px rgba(0,0,0,0.2);">×</button>
+        <strong>Fraza dana</strong><br>
+        <span style='font-size:1.2rem;'>${p.eng}</span>
+        <div>${p.sr}</div>
+        <em>${p.pron}</em>
+        <div style='margin-top:0.5rem;'>
+          <button class='listen-btn' onclick='speakAndHide("${p.eng.replace(/'/g,"\\'")}")' title='Slušaj izgovor'>🔊</button>
+          <button onclick="checkPronunciation('${p.eng.replace(/'/g,"\\'")}')" class="btn" style="background: linear-gradient(135deg, #10b981, #059669); color: white; margin-left: 0.5rem;">
+            🎤
+          </button>
+        </div>
+      </div>`;
+    
+    console.log('Fraza dana prikazana');
+  }
 
-let lessonCount = 0;
+  function closePhraseOfDay() {
+    const phraseElement = document.getElementById('phrase-of-day');
+    const lessonsElement = document.getElementById('lessons');
+    
+    phraseElement.style.display = 'none';
+    lessonsElement.style.display = 'block'; // Prikaži lekcije kada se fraza dana zatvori
+  }
 
-fetch('lessons.json?v=' + Date.now())
-  .then(res => res.json())
-  .then(data => {
-    lessonCount = data.length;
-    data.forEach((lesson, i) => createLesson(i, lesson));
-    updateProgress(lessonCount);
-  })
-  .catch(err => {
-    document.getElementById('lessons').innerHTML = '<p style="color:red;">Greška pri učitavanju lekcija.</p>';
-    console.error(err);
+  function speakAndHide(text) {
+    speak(text);
+  }
+
+  function checkPronunciation(expectedText) {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      alert('Speech recognition nije podržan u vašem browseru. Pokušajte sa Chrome ili Edge.');
+      return;
+    }
+
+    // Check if we're on HTTPS or localhost (required for microphone access)
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+      alert('Za pristup mikrofonu potrebna je HTTPS konekcija ili localhost. Trenutno ste na: ' + location.protocol + '//' + location.hostname);
+      return;
+    }
+
+    // Show loading modal first
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    modalOverlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    `;
+
+    const loadingModal = document.createElement('div');
+    loadingModal.className = 'speech-modal';
+    loadingModal.innerHTML = `
+      <h3>🎤 Priprema mikrofon...</h3>
+      <p>Molimo sačekajte dok se priprema mikrofon.</p>
+      <div style="margin:1rem 0;">
+        <div style="width:40px;height:40px;border:4px solid #e5e7eb;border-top:4px solid #3b82f6;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto;"></div>
+      </div>
+    `;
+    
+    modalOverlay.appendChild(loadingModal);
+    document.body.appendChild(modalOverlay);
+
+    // Try to get microphone permission
+    navigator.mediaDevices.getUserMedia({ 
+      audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+        autoGainControl: true
+      } 
+    })
+      .then(function(stream) {
+        // Permission granted, remove loading and start recognition
+        modalOverlay.remove();
+        startSpeechRecognition(expectedText);
+        // Stop the stream since we only needed permission
+        stream.getTracks().forEach(track => track.stop());
+      })
+      .catch(function(err) {
+        console.error('Microphone error:', err);
+        
+        let errorMessage = 'Problem sa pristupom mikrofonu.';
+        
+        switch(err.name) {
+          case 'NotAllowedError':
+            errorMessage = 'Dozvola za mikrofon je odbijena. Molimo dozvolite pristup mikrofonu u podešavanjima browsera i pokušajte ponovo.';
+            break;
+          case 'NotFoundError':
+            errorMessage = 'Mikrofon nije pronađen. Proverite da li je mikrofon povezan i radi.';
+            break;
+          case 'NotReadableError':
+            errorMessage = 'Mikrofon se koristi u drugoj aplikaciji. Zatvorite druge aplikacije koje koriste mikrofon.';
+            break;
+          case 'OverconstrainedError':
+            errorMessage = 'Mikrofon ne podržava tražene podešavanja.';
+            break;
+          default:
+            errorMessage = `Greška: ${err.message || err.name}`;
+        }
+        
+        // Show error modal with retry option
+        const errorModal = document.createElement('div');
+        errorModal.className = 'speech-modal';
+        errorModal.innerHTML = `
+          <h3>❌ Problem sa mikrofonom</h3>
+          <p style="color:#ef4444;margin:1rem 0;">${errorMessage}</p>
+          <div style="margin-top:1rem;">
+            <button onclick="this.closest('.modal-overlay').remove(); checkPronunciation('${expectedText.replace(/'/g,"\\'")}')" style="background:#3b82f6;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;margin-right:0.5rem;">Pokušaj ponovo</button>
+            <button onclick="this.closest('.modal-overlay').remove()" style="background:#ef4444;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;">Zatvori</button>
+          </div>
+        `;
+        
+        modalOverlay.innerHTML = '';
+        modalOverlay.appendChild(errorModal);
+      });
+  }
+
+  function startSpeechRecognition(expectedText) {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    // Mobile-specific settings
+    if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      recognition.continuous = true;
+      recognition.interimResults = true;
+    }
+
+    // Create modal overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    modalOverlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    `;
+
+    const resultDiv = document.createElement('div');
+    resultDiv.className = 'speech-modal';
+    resultDiv.innerHTML = `
+      <h3>🎤 Govorite sada...</h3>
+      <p><strong>Očekivano:</strong> ${expectedText}</p>
+      <div id="recognition-result" style="margin:1rem 0;padding:1rem;background:#f3f4f6;border-radius:8px;min-height:60px;">
+        <p style="color:#6b7280;">Slušam...</p>
+      </div>
+      <div style="margin-top:1rem;">
+        <button onclick="this.closest('.modal-overlay').remove()" style="background:#ef4444;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;margin-right:0.5rem;">Zatvori</button>
+        <button id="restart-recognition" style="background:#3b82f6;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;">Ponovo</button>
+      </div>
+    `;
+    
+    modalOverlay.appendChild(resultDiv);
+    document.body.appendChild(modalOverlay);
+
+    let finalTranscript = '';
+    let interimTranscript = '';
+    let recognitionStarted = false;
+
+    recognition.onstart = function() {
+      console.log('Speech recognition started');
+      recognitionStarted = true;
+      document.getElementById('recognition-result').innerHTML = '<p style="color:#6b7280;">Slušam... Govorite sada!</p>';
+    };
+
+    recognition.onresult = function(event) {
+      interimTranscript = '';
+      finalTranscript = '';
+      
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const transcript = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          finalTranscript += transcript;
+        } else {
+          interimTranscript += transcript;
+        }
+      }
+      
+      const resultElement = document.getElementById('recognition-result');
+      if (finalTranscript) {
+        const accuracy = calculateSimilarity(finalTranscript.toLowerCase(), expectedText.toLowerCase());
+        resultElement.innerHTML = `
+          <p><strong>Rekli ste:</strong> ${finalTranscript}</p>
+          <p><strong>Tačnost:</strong> ${accuracy}%</p>
+          <p style="color:${accuracy > 70 ? '#10b981' : '#ef4444'};font-weight:bold;">
+            ${accuracy > 70 ? 'Odlično! 🎉' : 'Pokušajte ponovo! 💪'}
+          </p>
+        `;
+        recognition.stop();
+      } else if (interimTranscript) {
+        resultElement.innerHTML = `
+          <p><strong>Čujem:</strong> ${interimTranscript}</p>
+          <p style="color:#6b7280;font-size:0.9rem;">Nastavite govoriti...</p>
+        `;
+      }
+    };
+
+    recognition.onerror = function(event) {
+      console.error('Speech recognition error:', event.error);
+      const resultElement = document.getElementById('recognition-result');
+      let errorMessage = 'Greška pri prepoznavanju govora.';
+      
+      switch(event.error) {
+        case 'no-speech':
+          errorMessage = 'Nije detektovan govor. Pokušajte ponovo i govorite jasnije.';
+          break;
+        case 'audio-capture':
+          errorMessage = 'Problem sa mikrofonom. Proverite dozvole i pokušajte ponovo.';
+          break;
+        case 'not-allowed':
+          errorMessage = 'Dozvola za mikrofon je potrebna. Proverite podešavanja browsera.';
+          break;
+        case 'network':
+          errorMessage = 'Problem sa mrežom. Proverite internet konekciju.';
+          break;
+        case 'service-not-allowed':
+          errorMessage = 'Speech recognition servis nije dozvoljen.';
+          break;
+        case 'bad-grammar':
+          errorMessage = 'Problem sa gramatikom.';
+          break;
+        case 'language-not-supported':
+          errorMessage = 'Jezik nije podržan.';
+          break;
+        default:
+          errorMessage = `Greška: ${event.error}`;
+      }
+      
+      resultElement.innerHTML = `
+        <p style="color:#ef4444;">Speech recognition nije dostupan.</p>
+        <p style="color:#6b7280;font-size:0.9rem;">Možete proveriti izgovor slušanjem originala.</p>
+        <button onclick="speak('${expectedText.replace(/'/g,"\\'")}')" style="background:#3b82f6;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;margin-top:0.5rem;">🔊 Slušaj original</button>
+      `;
+    };
+
+    recognition.onend = function() {
+      console.log('Speech recognition ended');
+      if (!recognitionStarted) {
+        document.getElementById('recognition-result').innerHTML = `
+          <p style="color:#ef4444;">Speech recognition nije uspeo da se pokrene.</p>
+          <p style="color:#6b7280;font-size:0.9rem;">Pokušajte ponovo.</p>
+        `;
+      }
+    };
+
+    // Restart button functionality
+    document.getElementById('restart-recognition').onclick = () => {
+      recognition.stop();
+      setTimeout(() => {
+        recognitionStarted = false;
+        recognition.start();
+        document.getElementById('recognition-result').innerHTML = '<p style="color:#6b7280;">Slušam...</p>';
+      }, 100);
+    };
+
+    // Start recognition with a small delay
+    setTimeout(() => {
+      try {
+        recognition.start();
+      } catch (error) {
+        console.error('Failed to start recognition:', error);
+        document.getElementById('recognition-result').innerHTML = `
+          <p style="color:#ef4444;">Greška pri pokretanju speech recognition-a.</p>
+          <p style="color:#6b7280;font-size:0.9rem;">Pokušajte ponovo.</p>
+        `;
+      }
+    }, 500);
+  }
+
+  function calculateSimilarity(str1, str2) {
+    const longer = str1.length > str2.length ? str1 : str2;
+    const shorter = str1.length > str2.length ? str2 : str1;
+    
+    if (longer.length === 0) return 100;
+    
+    const editDistance = levenshteinDistance(longer, shorter);
+    return Math.round((1 - editDistance / longer.length) * 100);
+  }
+
+  function levenshteinDistance(str1, str2) {
+    const matrix = [];
+    for (let i = 0; i <= str2.length; i++) {
+      matrix[i] = [i];
+    }
+    for (let j = 0; j <= str1.length; j++) {
+      matrix[0][j] = j;
+    }
+    for (let i = 1; i <= str2.length; i++) {
+      for (let j = 1; j <= str1.length; j++) {
+        if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+          matrix[i][j] = matrix[i - 1][j - 1];
+        } else {
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j - 1] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j] + 1
+          );
+        }
+      }
+    }
+    return matrix[str2.length][str1.length];
+  }
+
+  // Splash Screen functionality
+  function hideSplashScreen() {
+    const splashScreen = document.getElementById('splash-screen');
+    const mainContent = document.getElementById('main-content');
+    
+    // Fade out splash screen
+    splashScreen.classList.add('fade-out');
+    
+    // Show main content
+    mainContent.classList.add('show');
+    
+    // Remove splash screen after animation
+    setTimeout(() => {
+      splashScreen.remove();
+    }, 500);
+  }
+
+  // Initialize splash screen
+  document.addEventListener('DOMContentLoaded', () => {
+    // Simulate loading time (5 seconds)
+    setTimeout(() => {
+      hideSplashScreen();
+    }, 5000);
   });
-</script>
+
+  function toggleDarkMode() {
+    const body = document.body;
+    const isDark = body.classList.toggle('dark');
+    
+    // Update install button styles for dark mode
+    const installButton = document.getElementById('install-button');
+    if (installButton) {
+      if (isDark) {
+        installButton.style.background = 'linear-gradient(135deg, #818cf8, #6366f1)';
+        installButton.style.boxShadow = '0 8px 25px rgba(129, 140, 248, 0.3)';
+      } else {
+        installButton.style.background = 'linear-gradient(135deg, #6366f1, #8b5cf6)';
+        installButton.style.boxShadow = '0 8px 25px rgba(99, 102, 241, 0.3)';
+      }
+    }
+    
+    localStorage.setItem('darkMode', isDark);
+  }
+  </script>
 </body>
 </html>
