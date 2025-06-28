@@ -10,9 +10,101 @@
       navigator.serviceWorker.register('service-worker.js');
     }
   </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    *{box-sizing:border-box;font-family:Inter,sans-serif;margin:0;padding:0}
+    body{background:#f3f4f6;color:#111;display:flex;flex-direction:column;min-height:100vh}
+    header{background:#4f46e5;color:#fff;padding:1rem 1.5rem;text-align:center;font-weight:600;font-size:1.25rem;box-shadow:0 2px 4px rgba(0,0,0,.1)}
+    main{flex:1;display:flex;flex-direction:column;max-width:800px;width:100%;margin:0 auto;padding:1.5rem}
+    .lesson-card{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.1);padding:1rem 1.25rem;margin-bottom:1rem;cursor:pointer;transition:transform .15s;position:relative}
+    .lesson-card:hover{transform:translateY(-2px)}
+    .phrases{margin-top:.75rem;display:none}
+    .phrase{border-top:1px solid #e5e7eb;padding:.75rem 0}
+    .phrase:first-child{border-top:none}
+    .phrase-eng{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+    .phrase-sr,.phrase-pron{font-size:.9rem;line-height:1.4}
+    .listen-btn{margin-top:.35rem;background:#4f46e5;border:none;color:#fff;padding:.35rem .75rem;border-radius:6px;cursor:pointer;font-size:.8rem}
+    .quiz-btn{margin-top:1rem;background:#10b981;border:none;color:#fff;padding:.45rem .9rem;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600}
+    .completed-badge{position:absolute;top:1rem;right:1rem;background:#10b981;color:#fff;font-size:.7rem;padding:.2rem .5rem;border-radius:5px}
+    footer{background:#f9fafb;text-align:center;padding:.75rem;font-size:.8rem;color:#6b7280}
+  </style>
 </head>
 <body>
-  <h1>Engleski za putovanja</h1>
-  <p>Offline PWA test verzija je spremna!</p>
+<header>Engleski za putovanja</header>
+<main id="app"></main>
+<footer>&copy; 2025 Učenje engleskog • Web verzija</footer>
+
+<script>
+// ---- Lekcije ----
+const lessons = [{"title": "Pozdrav i predstavljanje", "phrases": [{"eng": "Hello!", "sr": "Zdravo!", "pron": "helou"}, {"eng": "My name is...", "sr": "Zovem se...", "pron": "maj nejm iz..."}, {"eng": "What's your name?", "sr": "Kako se zoveš?", "pron": "vots jor nejm?"}, {"eng": "Nice to meet you!", "sr": "Drago mi je!", "pron": "najs tu mit ju!"}, {"eng": "How are you?", "sr": "Kako si?", "pron": "hau ar ju?"}, {"eng": "I'm fine, thank you.", "sr": "Dobro sam, hvala.", "pron": "ajm fajn, tenk ju."}, {"eng": "Good morning!", "sr": "Dobro jutro!", "pron": "gud mornin!"}, {"eng": "Good night!", "sr": "Laku noć!", "pron": "gud najt!"}]}, {"title": "U restoranu ili kafiću", "phrases": [{"eng": "I'd like a coffee, please.", "sr": "Želeo bih kafu, molim.", "pron": "ajd lajk e kofi, pliz"}, {"eng": "Can I see the menu, please?", "sr": "Mogu li da vidim meni?", "pron": "ken aj si d menju, pliz"}, {"eng": "How much is it?", "sr": "Koliko košta?", "pron": "hau mač iz it"}, {"eng": "The bill, please.", "sr": "Račun, molim.", "pron": "d bil, pliz"}, {"eng": "Do you have vegetarian options?", "sr": "Imate li vegetarijanske opcije?", "pron": "du ju hev veđetarijan opšns?"}, {"eng": "I'm allergic to nuts.", "sr": "Alergičan sam na orašaste plodove.", "pron": "aj em alergik tu nats"}, {"eng": "Could I have some water?", "sr": "Mogu li dobiti vodu?", "pron": "kud aj hev sam woter?"}, {"eng": "That was delicious!", "sr": "Bilo je ukusno!", "pron": "det voz dilišs!"}]}];
+
+// ---- Render ----
+const app = document.getElementById('app');
+renderLessons(lessons);
+
+function renderLessons(lessons) {
+  app.innerHTML = '';
+  lessons.forEach((lesson, idx) => {
+    const completed = localStorage.getItem('lesson_'+idx) === 'done';
+    const card = document.createElement('div');
+    card.className = 'lesson-card';
+    card.innerHTML = `<h2>${lesson.title}</h2><p>${lesson.phrases.length} fraza</p>` +
+      (completed ? '<div class="completed-badge">Završeno</div>' : '');
+
+    const phrasesEl = document.createElement('div');
+    phrasesEl.className = 'phrases';
+
+    lesson.phrases.forEach(ph => {
+      const pDiv = document.createElement('div');
+      pDiv.className = 'phrase';
+      pDiv.innerHTML = `
+          <div class="phrase-eng">${ph.eng}</div>
+          <div class="phrase-sr">${ph.sr}</div>
+          <div class="phrase-pron">${ph.pron}</div>
+          <button class="listen-btn">Listen</button>
+      `;
+      pDiv.querySelector('.listen-btn').addEventListener('click', () => speak(ph.eng));
+      phrasesEl.appendChild(pDiv);
+    });
+
+    const quizBtn = document.createElement('button');
+    quizBtn.textContent = 'Kviz';
+    quizBtn.className = 'quiz-btn';
+    quizBtn.onclick = () => startQuiz(lesson, idx);
+    phrasesEl.appendChild(quizBtn);
+
+    card.appendChild(phrasesEl);
+    card.addEventListener('click', e => {
+      if(e.target.classList.contains('listen-btn') || e.target.classList.contains('quiz-btn')) return;
+      phrasesEl.style.display = phrasesEl.style.display === 'block' ? 'none' : 'block';
+    });
+    app.appendChild(card);
+  });
+}
+
+function speak(text) {
+  if(!('speechSynthesis' in window)) {
+    alert('Speech Synthesis nije podržan u ovom pretraživaču.');
+    return;
+  }
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'en-US';
+  window.speechSynthesis.speak(utter);
+}
+
+function startQuiz(lesson, index) {
+  let correct = 0;
+  const sample = lesson.phrases.slice(0, 3);
+  for(const ph of sample) {
+    const answer = prompt(`Šta znači: "${ph.eng}"?`);
+    if(answer && answer.trim().toLowerCase() === ph.sr.toLowerCase()) correct++;
+  }
+  alert(`Rezultat: ${correct}/${sample.length}`);
+  if(correct === sample.length) {
+    localStorage.setItem('lesson_'+index, 'done');
+    renderLessons(lessons);
+  }
+}
+</script>
 </body>
 </html>
