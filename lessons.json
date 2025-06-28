@@ -268,5 +268,410 @@
         "pron": "aj voz robd"
       }
     ]
+  },
+  {
+    "title": "Prevoz",
+    "phrases": [
+      {
+        "eng": "Where is the bus station?",
+        "sr": "Gde je autobuska stanica?",
+        "pron": "wer iz d bas stejšn"
+      },
+      {
+        "eng": "How much is a ticket?",
+        "sr": "Koliko košta karta?",
+        "pron": "hau mač iz e tiket"
+      },
+      {
+        "eng": "One ticket to the city center.",
+        "sr": "Jedna karta do centra grada.",
+        "pron": "wan tiket tu d siti sentr"
+      },
+      {
+        "eng": "Where can I buy a ticket?",
+        "sr": "Gde mogu kupiti kartu?",
+        "pron": "wer ken aj baj e tiket"
+      },
+      {
+        "eng": "Does this train go to Belgrade?",
+        "sr": "Ide li ovaj voz za Beograd?",
+        "pron": "daz dis trein gou tu Belgrejd"
+      },
+      {
+        "eng": "What time does it leave?",
+        "sr": "U koliko sati polazi?",
+        "pron": "vot tajm daz it liv"
+      },
+      {
+        "eng": "How long is the ride?",
+        "sr": "Koliko traje vožnja?",
+        "pron": "hau long iz d rajd"
+      },
+      {
+        "eng": "I need a taxi.",
+        "sr": "Treba mi taksi.",
+        "pron": "aj nid e teksi"
+      }
+    ]
+  },
+  {
+    "title": "Vremenske prilike",
+    "phrases": [
+      {
+        "eng": "What’s the weather like?",
+        "sr": "Kakvo je vreme?",
+        "pron": "vots d wedr lajk"
+      },
+      {
+        "eng": "It’s sunny.",
+        "sr": "Sunčano je.",
+        "pron": "its sani"
+      },
+      {
+        "eng": "It’s raining.",
+        "sr": "Pada kiša.",
+        "pron": "its rejning"
+      },
+      {
+        "eng": "It’s cold.",
+        "sr": "Hladno je.",
+        "pron": "its kould"
+      },
+      {
+        "eng": "It’s hot.",
+        "sr": "Vruće je.",
+        "pron": "its hot"
+      },
+      {
+        "eng": "It’s snowing.",
+        "sr": "Pada sneg.",
+        "pron": "its snouing"
+      },
+      {
+        "eng": "Is it going to rain?",
+        "sr": "Hoće li padati kiša?",
+        "pron": "iz it gouing tu rein"
+      },
+      {
+        "eng": "I forgot my umbrella.",
+        "sr": "Zaboravio sam kišobran.",
+        "pron": "aj forgot maj ambrela"
+      }
+    ]
+  },
+  {
+    "title": "Brojevi i vreme",
+    "phrases": [
+      {
+        "eng": "What time is it?",
+        "sr": "Koliko je sati?",
+        "pron": "vot tajm iz it"
+      },
+      {
+        "eng": "It’s ten o’clock.",
+        "sr": "Deset je sati.",
+        "pron": "its ten oklok"
+      },
+      {
+        "eng": "Half past two.",
+        "sr": "Dva i po.",
+        "pron": "haf past tu"
+      },
+      {
+        "eng": "Quarter to five.",
+        "sr": "Petnaest do pet.",
+        "pron": "kvortr tu fajv"
+      },
+      {
+        "eng": "Five thirty.",
+        "sr": "Pet i trideset.",
+        "pron": "fajv törti"
+      },
+      {
+        "eng": "One, two, three, four...",
+        "sr": "Jedan, dva, tri, četiri...",
+        "pron": "wan, tu, fri, for..."
+      },
+      {
+        "eng": "Ten, twenty, thirty...",
+        "sr": "Deset, dvadeset, trideset...",
+        "pron": "ten, twenti, törti..."
+      },
+      {
+        "eng": "I need to be there at six.",
+        "sr": "Treba da budem tamo u šest.",
+        "pron": "aj nid tu bi der et siks"
+      }
+    ]
+  },
+  {
+    "title": "Zdravlje",
+    "phrases": [
+      {
+        "eng": "I don’t feel well.",
+        "sr": "Nije mi dobro.",
+        "pron": "aj dont fil wel"
+      },
+      {
+        "eng": "I need a doctor.",
+        "sr": "Treba mi doktor.",
+        "pron": "aj nid e doktor"
+      },
+      {
+        "eng": "I have a headache.",
+        "sr": "Imam glavobolju.",
+        "pron": "aj hev e hedejk"
+      },
+      {
+        "eng": "My stomach hurts.",
+        "sr": "Boli me stomak.",
+        "pron": "maj stomak herts"
+      },
+      {
+        "eng": "I have a fever.",
+        "sr": "Imam temperaturu.",
+        "pron": "aj hev e fivr"
+      },
+      {
+        "eng": "I’m allergic to nuts.",
+        "sr": "Alergičan sam na orašaste plodove.",
+        "pron": "ajm alergik tu nats"
+      },
+      {
+        "eng": "Can I get this at the pharmacy?",
+        "sr": "Mogu li ovo dobiti u apoteci?",
+        "pron": "ken aj get dis et d farmasi"
+      },
+      {
+        "eng": "Do you have any painkillers?",
+        "sr": "Imate li lekove protiv bolova?",
+        "pron": "du ju hev eni pejnkilrz"
+      }
+    ]
+  },
+  {
+    "title": "Postavljanje pitanja",
+    "phrases": [
+      {
+        "eng": "Where is the toilet?",
+        "sr": "Gde je toalet?",
+        "pron": "wer iz d tojlet"
+      },
+      {
+        "eng": "When does it open?",
+        "sr": "Kada se otvara?",
+        "pron": "wen daz it oupen"
+      },
+      {
+        "eng": "Why is it closed?",
+        "sr": "Zašto je zatvoreno?",
+        "pron": "vaj iz it klouzd"
+      },
+      {
+        "eng": "How do I get there?",
+        "sr": "Kako da stignem tamo?",
+        "pron": "hau du aj get der"
+      },
+      {
+        "eng": "What is this?",
+        "sr": "Šta je ovo?",
+        "pron": "vot iz dis"
+      },
+      {
+        "eng": "Who is he?",
+        "sr": "Ko je on?",
+        "pron": "hu iz hi"
+      },
+      {
+        "eng": "Can you repeat that?",
+        "sr": "Možete li ponoviti?",
+        "pron": "ken ju ripit det"
+      },
+      {
+        "eng": "What does this mean?",
+        "sr": "Šta ovo znači?",
+        "pron": "vot daz dis min"
+      }
+    ]
+  },
+  {
+    "title": "U banci",
+    "phrases": [
+      {
+        "eng": "Where is the nearest ATM?",
+        "sr": "Gde je najbliži bankomat?",
+        "pron": "wer iz d nirst ej-ti-em"
+      },
+      {
+        "eng": "I need to exchange money.",
+        "sr": "Treba mi menjačnica.",
+        "pron": "aj nid tu eksčejndž mani"
+      },
+      {
+        "eng": "What is the exchange rate?",
+        "sr": "Koji je kurs?",
+        "pron": "vot iz d eksčejndž rejt"
+      },
+      {
+        "eng": "Can I withdraw cash?",
+        "sr": "Mogu li podići gotovinu?",
+        "pron": "ken aj widro keš"
+      },
+      {
+        "eng": "I lost my card.",
+        "sr": "Izgubio sam karticu.",
+        "pron": "aj lost maj kard"
+      },
+      {
+        "eng": "Please block my account.",
+        "sr": "Molim vas, blokirajte moj nalog.",
+        "pron": "pliz blok maj akaunt"
+      },
+      {
+        "eng": "I want to open an account.",
+        "sr": "Želim da otvorim račun.",
+        "pron": "aj vont tu oupen en akaunt"
+      },
+      {
+        "eng": "Can I see my balance?",
+        "sr": "Mogu li videti stanje?",
+        "pron": "ken aj si maj balans"
+      }
+    ]
+  },
+  {
+    "title": "U prodavnici",
+    "phrases": [
+      {
+        "eng": "Do you have bread?",
+        "sr": "Imate li hleb?",
+        "pron": "du ju hev bred"
+      },
+      {
+        "eng": "Where are the drinks?",
+        "sr": "Gde su pića?",
+        "pron": "wer ar d drinks"
+      },
+      {
+        "eng": "Can I pay by card?",
+        "sr": "Mogu li platiti karticom?",
+        "pron": "ken aj pej baj kard"
+      },
+      {
+        "eng": "This is too expensive.",
+        "sr": "Ovo je preskupo.",
+        "pron": "dis iz tu ekspensiv"
+      },
+      {
+        "eng": "I need a receipt.",
+        "sr": "Treba mi račun.",
+        "pron": "aj nid e risiit"
+      },
+      {
+        "eng": "The milk is in the fridge.",
+        "sr": "Mleko je u frižideru.",
+        "pron": "d milk iz in d fridž"
+      },
+      {
+        "eng": "How much is this cheese?",
+        "sr": "Koliko košta ovaj sir?",
+        "pron": "hau mač iz dis čiz"
+      },
+      {
+        "eng": "Can I return this?",
+        "sr": "Mogu li ovo vratiti?",
+        "pron": "ken aj riturn dis"
+      }
+    ]
+  },
+  {
+    "title": "Na ulici",
+    "phrases": [
+      {
+        "eng": "Excuse me, where is the station?",
+        "sr": "Izvinite, gde je stanica?",
+        "pron": "ekskjuz mi, wer iz d stejšn"
+      },
+      {
+        "eng": "Is it far from here?",
+        "sr": "Da li je daleko?",
+        "pron": "iz it far from hir"
+      },
+      {
+        "eng": "Can you show me on the map?",
+        "sr": "Možete li mi pokazati na mapi?",
+        "pron": "ken ju šou mi on d map"
+      },
+      {
+        "eng": "Turn left.",
+        "sr": "Skrenite levo.",
+        "pron": "törn left"
+      },
+      {
+        "eng": "Turn right.",
+        "sr": "Skrenite desno.",
+        "pron": "törn rajt"
+      },
+      {
+        "eng": "Go straight ahead.",
+        "sr": "Idite pravo.",
+        "pron": "gou strejt ehed"
+      },
+      {
+        "eng": "It’s on the right.",
+        "sr": "Sa desne strane je.",
+        "pron": "its on d rajt"
+      },
+      {
+        "eng": "It’s next to the bank.",
+        "sr": "Pored banke je.",
+        "pron": "its nekst tu d bank"
+      }
+    ]
+  },
+  {
+    "title": "Na plaži",
+    "phrases": [
+      {
+        "eng": "Where can I rent an umbrella?",
+        "sr": "Gde mogu da iznajmim suncobran?",
+        "pron": "wer ken aj rent en ambrela"
+      },
+      {
+        "eng": "I want to swim.",
+        "sr": "Želim da plivam.",
+        "pron": "aj vont tu swim"
+      },
+      {
+        "eng": "The water is warm.",
+        "sr": "Voda je topla.",
+        "pron": "d woter iz worm"
+      },
+      {
+        "eng": "Do you sell sunscreen?",
+        "sr": "Prodajete li kremu za sunčanje?",
+        "pron": "du ju sel sanskrin"
+      },
+      {
+        "eng": "I lost my towel.",
+        "sr": "Izgubio sam peškir.",
+        "pron": "aj lost maj tauel"
+      },
+      {
+        "eng": "Let’s build a sandcastle.",
+        "sr": "Hajde da napravimo zamak od peska.",
+        "pron": "lets bild e sendkesl"
+      },
+      {
+        "eng": "Don’t go too far.",
+        "sr": "Ne idi predaleko.",
+        "pron": "dont gou tu far"
+      },
+      {
+        "eng": "Watch out for jellyfish!",
+        "sr": "Pazi se meduza!",
+        "pron": "voč aut for dželifish"
+      }
+    ]
   }
 ]
