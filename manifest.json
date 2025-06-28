@@ -2,12 +2,12 @@
   "name": "PutujGovori - English Learning App",
   "short_name": "PutujGovori",
   "description": "Aplikacija za učenje engleskog jezika namenjena putnicima",
-  "start_url": "./index.html",
+  "start_url": "/engleski-app/",
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#6366f1",
   "orientation": "portrait-primary",
-  "scope": "./",
+  "scope": "/engleski-app/",
   "lang": "sr",
   "dir": "ltr",
   "prefer_related_applications": false,
@@ -39,7 +39,7 @@
       "name": "Prva lekcija",
       "short_name": "Lekcija 1",
       "description": "Započni sa prvom lekcijom",
-      "url": "./index.html?lesson=0",
+      "url": "/engleski-app/?lesson=0",
       "icons": [
         {
           "src": "icon-192.png",
