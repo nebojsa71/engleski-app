@@ -136,19 +136,73 @@ function createLesson(index, lesson) {
   const quizBtn = document.createElement('button');
   quizBtn.textContent = 'Kviz';
   quizBtn.className = 'quiz-btn';
-  quizBtn.onclick = () => {
+  quizBtn.onclick = quizBtn.onclick = () => {
+    const quizContainer = document.createElement('div');
+    quizContainer.style.padding = '1rem';
+    quizContainer.style.background = '#f3f4f6';
+    quizContainer.style.borderRadius = '10px';
+    quizContainer.style.marginTop = '1rem';
+
     let correct = 0;
-    const options = lesson.phrases;
-    for (let i = 0; i < 5; i++) {
-      const q = options[Math.floor(Math.random() * options.length)];
-      const a = prompt(`Prevedi: "${q.eng}"`);
-      if (a && a.trim().toLowerCase() === q.sr.toLowerCase()) correct++;
+    let current = 0;
+    const total = 5;
+    const used = [];
+    const options = lesson.phrases.slice();
+
+    function showQuestion() {
+      if (current >= total) {
+        quizContainer.innerHTML = `<p>Rezultat: <strong>${correct}/${total}</strong></p>`;
+        if (correct >= 4) {
+          localStorage.setItem('lesson_' + index, 'done');
+          updateProgress(lessonCount);
+        }
+        return;
+      }
+
+      let q;
+      do {
+        q = options[Math.floor(Math.random() * options.length)];
+      } while (used.includes(q.eng));
+      used.push(q.eng);
+
+      const answers = [q.sr];
+      while (answers.length < 4) {
+        const fake = options[Math.floor(Math.random() * options.length)].sr;
+        if (!answers.includes(fake)) answers.push(fake);
+      }
+      answers.sort(() => Math.random() - 0.5);
+
+      quizContainer.innerHTML = `<p><strong>${q.eng}</strong></p>`;
+      answers.forEach(ans => {
+        const btn = document.createElement('button');
+        btn.textContent = ans;
+        btn.style.display = 'block';
+        btn.style.margin = '0.3rem 0';
+        btn.style.padding = '0.5rem';
+        btn.style.background = '#e5e7eb';
+        btn.style.border = 'none';
+        btn.style.borderRadius = '5px';
+        btn.style.cursor = 'pointer';
+        btn.onclick = () => {
+          if (ans === q.sr) {
+            correct++;
+            btn.style.background = '#10b981';
+            btn.style.color = 'white';
+          } else {
+            btn.style.background = '#ef4444';
+            btn.style.color = 'white';
+          }
+          setTimeout(() => {
+            current++;
+            showQuestion();
+          }, 700);
+        };
+        quizContainer.appendChild(btn);
+      });
     }
-    alert(`Rezultat: ${correct}/5`);
-    if (correct >= 4) {
-      localStorage.setItem('lesson_' + index, 'done');
-      updateProgress(lessonCount);
-    }
+
+    phrasesDiv.appendChild(quizContainer);
+    showQuestion();
   };
   phrasesDiv.appendChild(quizBtn);
 
