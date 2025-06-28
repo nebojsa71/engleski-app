@@ -129,7 +129,7 @@ function createLesson(index, lesson) {
       <strong>${p.eng}</strong><br>
       ${p.sr}<br>
       <em>${p.pron}</em><br>
-      <button class='listen-btn' onclick="speak('${p.eng}')">Listen</button>
+      <button class='listen-btn' onclick="speak(JSON.parse(JSON.stringify('${p.eng}'))); event.stopPropagation()">Listen</button>
     `;
     phrasesDiv.appendChild(pDiv);
   });
