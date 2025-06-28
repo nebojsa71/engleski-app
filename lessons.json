@@ -8,21 +8,6 @@
         "pron": "helou"
       },
       {
-        "eng": "What's your name?",
-        "sr": "Kako se zoveš?",
-        "pron": "vots jor nejm?"
-      },
-      {
-        "eng": "My name is Ana.",
-        "sr": "Zovem se Ana.",
-        "pron": "maj nejm iz Ana."
-      },
-      {
-        "eng": "Nice to meet you.",
-        "sr": "Drago mi je.",
-        "pron": "najs tu mit ju"
-      },
-      {
         "eng": "Good morning.",
         "sr": "Dobro jutro.",
         "pron": "gud mornin"
@@ -30,12 +15,27 @@
       {
         "eng": "Good evening.",
         "sr": "Dobro veče.",
-        "pron": "gud ivnin"
+        "pron": "gud ivning"
       },
       {
-        "eng": "Goodbye!",
-        "sr": "Doviđenja!",
-        "pron": "gudbaj"
+        "eng": "Good night.",
+        "sr": "Laku noć.",
+        "pron": "gud najt"
+      },
+      {
+        "eng": "What's your name?",
+        "sr": "Kako se zoveš?",
+        "pron": "vots jor nejm"
+      },
+      {
+        "eng": "My name is Ana.",
+        "sr": "Zovem se Ana.",
+        "pron": "maj nejm iz Ana"
+      },
+      {
+        "eng": "Nice to meet you.",
+        "sr": "Drago mi je.",
+        "pron": "najs tu mit ju"
       },
       {
         "eng": "How are you?",
@@ -138,44 +138,44 @@
     "title": "U hotelu",
     "phrases": [
       {
-        "eng": "U hotelu phrase 1",
-        "sr": "U hotelu fraza 1",
-        "pron": "izgovor 1"
+        "eng": "I have a reservation under Ana.",
+        "sr": "Imam rezervaciju na ime Ana.",
+        "pron": "aj hev e rezervejšn ander Ana"
       },
       {
-        "eng": "U hotelu phrase 2",
-        "sr": "U hotelu fraza 2",
-        "pron": "izgovor 2"
+        "eng": "Can I get the room key?",
+        "sr": "Mogu li dobiti ključ sobe?",
+        "pron": "ken aj get d rum ki"
       },
       {
-        "eng": "U hotelu phrase 3",
-        "sr": "U hotelu fraza 3",
-        "pron": "izgovor 3"
+        "eng": "Where is the elevator?",
+        "sr": "Gde je lift?",
+        "pron": "wer iz d elevjator"
       },
       {
-        "eng": "U hotelu phrase 4",
-        "sr": "U hotelu fraza 4",
-        "pron": "izgovor 4"
+        "eng": "Is breakfast included?",
+        "sr": "Da li je doručak uključen?",
+        "pron": "iz brekfast inkljuded"
       },
       {
-        "eng": "U hotelu phrase 5",
-        "sr": "U hotelu fraza 5",
-        "pron": "izgovor 5"
+        "eng": "The room is too cold.",
+        "sr": "Soba je prehladna.",
+        "pron": "d rum iz tu kould"
       },
       {
-        "eng": "U hotelu phrase 6",
-        "sr": "U hotelu fraza 6",
-        "pron": "izgovor 6"
+        "eng": "Can I change the room?",
+        "sr": "Mogu li promeniti sobu?",
+        "pron": "ken aj čejndž d rum"
       },
       {
-        "eng": "U hotelu phrase 7",
-        "sr": "U hotelu fraza 7",
-        "pron": "izgovor 7"
+        "eng": "What time is check-out?",
+        "sr": "Kada je odjava?",
+        "pron": "vot tajm iz ček-aut"
       },
       {
-        "eng": "U hotelu phrase 8",
-        "sr": "U hotelu fraza 8",
-        "pron": "izgovor 8"
+        "eng": "Can I leave my luggage here?",
+        "sr": "Mogu li ostaviti prtljag ovde?",
+        "pron": "ken aj liv maj lagidž hir"
       }
     ]
   },
@@ -183,44 +183,44 @@
     "title": "Kupovina",
     "phrases": [
       {
-        "eng": "Kupovina phrase 1",
-        "sr": "Kupovina fraza 1",
-        "pron": "izgovor 1"
+        "eng": "How much is this?",
+        "sr": "Koliko ovo košta?",
+        "pron": "hau mač iz dis"
       },
       {
-        "eng": "Kupovina phrase 2",
-        "sr": "Kupovina fraza 2",
-        "pron": "izgovor 2"
+        "eng": "Do you have this in medium?",
+        "sr": "Imate li ovo u veličini M?",
+        "pron": "du ju hev dis in midijum"
       },
       {
-        "eng": "Kupovina phrase 3",
-        "sr": "Kupovina fraza 3",
-        "pron": "izgovor 3"
+        "eng": "Can I try it on?",
+        "sr": "Mogu li da probam?",
+        "pron": "ken aj traj it on"
       },
       {
-        "eng": "Kupovina phrase 4",
-        "sr": "Kupovina fraza 4",
-        "pron": "izgovor 4"
+        "eng": "I’m just looking.",
+        "sr": "Samo razgledam.",
+        "pron": "ajm džast luking"
       },
       {
-        "eng": "Kupovina phrase 5",
-        "sr": "Kupovina fraza 5",
-        "pron": "izgovor 5"
+        "eng": "I’ll take it.",
+        "sr": "Uzeću to.",
+        "pron": "ajl tejk it"
       },
       {
-        "eng": "Kupovina phrase 6",
-        "sr": "Kupovina fraza 6",
-        "pron": "izgovor 6"
+        "eng": "Do you have a bag?",
+        "sr": "Imate li kesu?",
+        "pron": "du ju hev e beg"
       },
       {
-        "eng": "Kupovina phrase 7",
-        "sr": "Kupovina fraza 7",
-        "pron": "izgovor 7"
+        "eng": "Can I pay in cash?",
+        "sr": "Mogu li platiti gotovinom?",
+        "pron": "ken aj pej in keš"
       },
       {
-        "eng": "Kupovina phrase 8",
-        "sr": "Kupovina fraza 8",
-        "pron": "izgovor 8"
+        "eng": "It’s too expensive.",
+        "sr": "Preskupo je.",
+        "pron": "its tu ekspensiv"
       }
     ]
   },
@@ -228,449 +228,44 @@
     "title": "Hitne situacije",
     "phrases": [
       {
-        "eng": "Hitne situacije phrase 1",
-        "sr": "Hitne situacije fraza 1",
-        "pron": "izgovor 1"
+        "eng": "Call the police!",
+        "sr": "Pozovite policiju!",
+        "pron": "kol d polis"
       },
       {
-        "eng": "Hitne situacije phrase 2",
-        "sr": "Hitne situacije fraza 2",
-        "pron": "izgovor 2"
+        "eng": "I need help.",
+        "sr": "Treba mi pomoć.",
+        "pron": "aj nid help"
       },
       {
-        "eng": "Hitne situacije phrase 3",
-        "sr": "Hitne situacije fraza 3",
-        "pron": "izgovor 3"
+        "eng": "Call an ambulance!",
+        "sr": "Pozovite hitnu pomoć!",
+        "pron": "kol en embjulens"
       },
       {
-        "eng": "Hitne situacije phrase 4",
-        "sr": "Hitne situacije fraza 4",
-        "pron": "izgovor 4"
+        "eng": "I lost my passport.",
+        "sr": "Izgubio sam pasoš.",
+        "pron": "aj lost maj pasport"
       },
       {
-        "eng": "Hitne situacije phrase 5",
-        "sr": "Hitne situacije fraza 5",
-        "pron": "izgovor 5"
+        "eng": "There was an accident.",
+        "sr": "Desila se nezgoda.",
+        "pron": "der voz en aksident"
       },
       {
-        "eng": "Hitne situacije phrase 6",
-        "sr": "Hitne situacije fraza 6",
-        "pron": "izgovor 6"
+        "eng": "I’m not feeling well.",
+        "sr": "Nije mi dobro.",
+        "pron": "ajm not filing wel"
       },
       {
-        "eng": "Hitne situacije phrase 7",
-        "sr": "Hitne situacije fraza 7",
-        "pron": "izgovor 7"
+        "eng": "Where is the nearest hospital?",
+        "sr": "Gde je najbliža bolnica?",
+        "pron": "wer iz d nirst hospitl"
       },
       {
-        "eng": "Hitne situacije phrase 8",
-        "sr": "Hitne situacije fraza 8",
-        "pron": "izgovor 8"
-      }
-    ]
-  },
-  {
-    "title": "Prevoz",
-    "phrases": [
-      {
-        "eng": "Prevoz phrase 1",
-        "sr": "Prevoz fraza 1",
-        "pron": "izgovor 1"
-      },
-      {
-        "eng": "Prevoz phrase 2",
-        "sr": "Prevoz fraza 2",
-        "pron": "izgovor 2"
-      },
-      {
-        "eng": "Prevoz phrase 3",
-        "sr": "Prevoz fraza 3",
-        "pron": "izgovor 3"
-      },
-      {
-        "eng": "Prevoz phrase 4",
-        "sr": "Prevoz fraza 4",
-        "pron": "izgovor 4"
-      },
-      {
-        "eng": "Prevoz phrase 5",
-        "sr": "Prevoz fraza 5",
-        "pron": "izgovor 5"
-      },
-      {
-        "eng": "Prevoz phrase 6",
-        "sr": "Prevoz fraza 6",
-        "pron": "izgovor 6"
-      },
-      {
-        "eng": "Prevoz phrase 7",
-        "sr": "Prevoz fraza 7",
-        "pron": "izgovor 7"
-      },
-      {
-        "eng": "Prevoz phrase 8",
-        "sr": "Prevoz fraza 8",
-        "pron": "izgovor 8"
-      }
-    ]
-  },
-  {
-    "title": "Vremenske prilike",
-    "phrases": [
-      {
-        "eng": "Vremenske prilike phrase 1",
-        "sr": "Vremenske prilike fraza 1",
-        "pron": "izgovor 1"
-      },
-      {
-        "eng": "Vremenske prilike phrase 2",
-        "sr": "Vremenske prilike fraza 2",
-        "pron": "izgovor 2"
-      },
-      {
-        "eng": "Vremenske prilike phrase 3",
-        "sr": "Vremenske prilike fraza 3",
-        "pron": "izgovor 3"
-      },
-      {
-        "eng": "Vremenske prilike phrase 4",
-        "sr": "Vremenske prilike fraza 4",
-        "pron": "izgovor 4"
-      },
-      {
-        "eng": "Vremenske prilike phrase 5",
-        "sr": "Vremenske prilike fraza 5",
-        "pron": "izgovor 5"
-      },
-      {
-        "eng": "Vremenske prilike phrase 6",
-        "sr": "Vremenske prilike fraza 6",
-        "pron": "izgovor 6"
-      },
-      {
-        "eng": "Vremenske prilike phrase 7",
-        "sr": "Vremenske prilike fraza 7",
-        "pron": "izgovor 7"
-      },
-      {
-        "eng": "Vremenske prilike phrase 8",
-        "sr": "Vremenske prilike fraza 8",
-        "pron": "izgovor 8"
-      }
-    ]
-  },
-  {
-    "title": "Brojevi i vreme",
-    "phrases": [
-      {
-        "eng": "Brojevi i vreme phrase 1",
-        "sr": "Brojevi i vreme fraza 1",
-        "pron": "izgovor 1"
-      },
-      {
-        "eng": "Brojevi i vreme phrase 2",
-        "sr": "Brojevi i vreme fraza 2",
-        "pron": "izgovor 2"
-      },
-      {
-        "eng": "Brojevi i vreme phrase 3",
-        "sr": "Brojevi i vreme fraza 3",
-        "pron": "izgovor 3"
-      },
-      {
-        "eng": "Brojevi i vreme phrase 4",
-        "sr": "Brojevi i vreme fraza 4",
-        "pron": "izgovor 4"
-      },
-      {
-        "eng": "Brojevi i vreme phrase 5",
-        "sr": "Brojevi i vreme fraza 5",
-        "pron": "izgovor 5"
-      },
-      {
-        "eng": "Brojevi i vreme phrase 6",
-        "sr": "Brojevi i vreme fraza 6",
-        "pron": "izgovor 6"
-      },
-      {
-        "eng": "Brojevi i vreme phrase 7",
-        "sr": "Brojevi i vreme fraza 7",
-        "pron": "izgovor 7"
-      },
-      {
-        "eng": "Brojevi i vreme phrase 8",
-        "sr": "Brojevi i vreme fraza 8",
-        "pron": "izgovor 8"
-      }
-    ]
-  },
-  {
-    "title": "Zdravlje",
-    "phrases": [
-      {
-        "eng": "Zdravlje phrase 1",
-        "sr": "Zdravlje fraza 1",
-        "pron": "izgovor 1"
-      },
-      {
-        "eng": "Zdravlje phrase 2",
-        "sr": "Zdravlje fraza 2",
-        "pron": "izgovor 2"
-      },
-      {
-        "eng": "Zdravlje phrase 3",
-        "sr": "Zdravlje fraza 3",
-        "pron": "izgovor 3"
-      },
-      {
-        "eng": "Zdravlje phrase 4",
-        "sr": "Zdravlje fraza 4",
-        "pron": "izgovor 4"
-      },
-      {
-        "eng": "Zdravlje phrase 5",
-        "sr": "Zdravlje fraza 5",
-        "pron": "izgovor 5"
-      },
-      {
-        "eng": "Zdravlje phrase 6",
-        "sr": "Zdravlje fraza 6",
-        "pron": "izgovor 6"
-      },
-      {
-        "eng": "Zdravlje phrase 7",
-        "sr": "Zdravlje fraza 7",
-        "pron": "izgovor 7"
-      },
-      {
-        "eng": "Zdravlje phrase 8",
-        "sr": "Zdravlje fraza 8",
-        "pron": "izgovor 8"
-      }
-    ]
-  },
-  {
-    "title": "Postavljanje pitanja",
-    "phrases": [
-      {
-        "eng": "Postavljanje pitanja phrase 1",
-        "sr": "Postavljanje pitanja fraza 1",
-        "pron": "izgovor 1"
-      },
-      {
-        "eng": "Postavljanje pitanja phrase 2",
-        "sr": "Postavljanje pitanja fraza 2",
-        "pron": "izgovor 2"
-      },
-      {
-        "eng": "Postavljanje pitanja phrase 3",
-        "sr": "Postavljanje pitanja fraza 3",
-        "pron": "izgovor 3"
-      },
-      {
-        "eng": "Postavljanje pitanja phrase 4",
-        "sr": "Postavljanje pitanja fraza 4",
-        "pron": "izgovor 4"
-      },
-      {
-        "eng": "Postavljanje pitanja phrase 5",
-        "sr": "Postavljanje pitanja fraza 5",
-        "pron": "izgovor 5"
-      },
-      {
-        "eng": "Postavljanje pitanja phrase 6",
-        "sr": "Postavljanje pitanja fraza 6",
-        "pron": "izgovor 6"
-      },
-      {
-        "eng": "Postavljanje pitanja phrase 7",
-        "sr": "Postavljanje pitanja fraza 7",
-        "pron": "izgovor 7"
-      },
-      {
-        "eng": "Postavljanje pitanja phrase 8",
-        "sr": "Postavljanje pitanja fraza 8",
-        "pron": "izgovor 8"
-      }
-    ]
-  },
-  {
-    "title": "U banci",
-    "phrases": [
-      {
-        "eng": "U banci phrase 1",
-        "sr": "U banci fraza 1",
-        "pron": "izgovor 1"
-      },
-      {
-        "eng": "U banci phrase 2",
-        "sr": "U banci fraza 2",
-        "pron": "izgovor 2"
-      },
-      {
-        "eng": "U banci phrase 3",
-        "sr": "U banci fraza 3",
-        "pron": "izgovor 3"
-      },
-      {
-        "eng": "U banci phrase 4",
-        "sr": "U banci fraza 4",
-        "pron": "izgovor 4"
-      },
-      {
-        "eng": "U banci phrase 5",
-        "sr": "U banci fraza 5",
-        "pron": "izgovor 5"
-      },
-      {
-        "eng": "U banci phrase 6",
-        "sr": "U banci fraza 6",
-        "pron": "izgovor 6"
-      },
-      {
-        "eng": "U banci phrase 7",
-        "sr": "U banci fraza 7",
-        "pron": "izgovor 7"
-      },
-      {
-        "eng": "U banci phrase 8",
-        "sr": "U banci fraza 8",
-        "pron": "izgovor 8"
-      }
-    ]
-  },
-  {
-    "title": "U prodavnici",
-    "phrases": [
-      {
-        "eng": "U prodavnici phrase 1",
-        "sr": "U prodavnici fraza 1",
-        "pron": "izgovor 1"
-      },
-      {
-        "eng": "U prodavnici phrase 2",
-        "sr": "U prodavnici fraza 2",
-        "pron": "izgovor 2"
-      },
-      {
-        "eng": "U prodavnici phrase 3",
-        "sr": "U prodavnici fraza 3",
-        "pron": "izgovor 3"
-      },
-      {
-        "eng": "U prodavnici phrase 4",
-        "sr": "U prodavnici fraza 4",
-        "pron": "izgovor 4"
-      },
-      {
-        "eng": "U prodavnici phrase 5",
-        "sr": "U prodavnici fraza 5",
-        "pron": "izgovor 5"
-      },
-      {
-        "eng": "U prodavnici phrase 6",
-        "sr": "U prodavnici fraza 6",
-        "pron": "izgovor 6"
-      },
-      {
-        "eng": "U prodavnici phrase 7",
-        "sr": "U prodavnici fraza 7",
-        "pron": "izgovor 7"
-      },
-      {
-        "eng": "U prodavnici phrase 8",
-        "sr": "U prodavnici fraza 8",
-        "pron": "izgovor 8"
-      }
-    ]
-  },
-  {
-    "title": "Na ulici",
-    "phrases": [
-      {
-        "eng": "Na ulici phrase 1",
-        "sr": "Na ulici fraza 1",
-        "pron": "izgovor 1"
-      },
-      {
-        "eng": "Na ulici phrase 2",
-        "sr": "Na ulici fraza 2",
-        "pron": "izgovor 2"
-      },
-      {
-        "eng": "Na ulici phrase 3",
-        "sr": "Na ulici fraza 3",
-        "pron": "izgovor 3"
-      },
-      {
-        "eng": "Na ulici phrase 4",
-        "sr": "Na ulici fraza 4",
-        "pron": "izgovor 4"
-      },
-      {
-        "eng": "Na ulici phrase 5",
-        "sr": "Na ulici fraza 5",
-        "pron": "izgovor 5"
-      },
-      {
-        "eng": "Na ulici phrase 6",
-        "sr": "Na ulici fraza 6",
-        "pron": "izgovor 6"
-      },
-      {
-        "eng": "Na ulici phrase 7",
-        "sr": "Na ulici fraza 7",
-        "pron": "izgovor 7"
-      },
-      {
-        "eng": "Na ulici phrase 8",
-        "sr": "Na ulici fraza 8",
-        "pron": "izgovor 8"
-      }
-    ]
-  },
-  {
-    "title": "Na plaži",
-    "phrases": [
-      {
-        "eng": "Na plaži phrase 1",
-        "sr": "Na plaži fraza 1",
-        "pron": "izgovor 1"
-      },
-      {
-        "eng": "Na plaži phrase 2",
-        "sr": "Na plaži fraza 2",
-        "pron": "izgovor 2"
-      },
-      {
-        "eng": "Na plaži phrase 3",
-        "sr": "Na plaži fraza 3",
-        "pron": "izgovor 3"
-      },
-      {
-        "eng": "Na plaži phrase 4",
-        "sr": "Na plaži fraza 4",
-        "pron": "izgovor 4"
-      },
-      {
-        "eng": "Na plaži phrase 5",
-        "sr": "Na plaži fraza 5",
-        "pron": "izgovor 5"
-      },
-      {
-        "eng": "Na plaži phrase 6",
-        "sr": "Na plaži fraza 6",
-        "pron": "izgovor 6"
-      },
-      {
-        "eng": "Na plaži phrase 7",
-        "sr": "Na plaži fraza 7",
-        "pron": "izgovor 7"
-      },
-      {
-        "eng": "Na plaži phrase 8",
-        "sr": "Na plaži fraza 8",
-        "pron": "izgovor 8"
+        "eng": "I was robbed.",
+        "sr": "Opljačkan sam.",
+        "pron": "aj voz robd"
       }
     ]
   }
