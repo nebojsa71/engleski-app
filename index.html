@@ -145,5 +145,17 @@ function createLesson(index, lesson) {
 lessons.forEach((lesson, i) => createLesson(i, lesson));
 updateProgress();
 </script>
+
+<script>
+function speak(text) {
+  if (!('speechSynthesis' in window)) {
+    alert('Ova funkcija nije podržana.');
+    return;
+  }
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'en-US';
+  window.speechSynthesis.speak(utter);
+}
+</script>
 </body>
 </html>
