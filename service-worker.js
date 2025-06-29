@@ -1,9 +1,11 @@
-const cacheName = 'putujgovori-v3';
+const cacheName = 'putujgovori-v8';
 const assets = [
   './',
   './index.html',
   './manifest.json',
   './lessons.json',
+  './lessons_intermediate.json',
+  './lessons_advanced.json',
   './icon-192.png',
   './icon-512.png',
   './service-worker.js'
@@ -38,6 +40,17 @@ self.addEventListener('activate', event => {
       );
     }).then(() => {
       console.log('Service Worker activated');
+      // Notify all clients that service worker is ready
+      self.clients.claim().then(() => {
+        self.clients.matchAll().then(clients => {
+          clients.forEach(client => {
+            client.postMessage({
+              type: 'SW_ACTIVATED',
+              version: cacheName
+            });
+          });
+        });
+      });
       return self.clients.claim();
     })
   );
@@ -131,4 +144,15 @@ self.addEventListener('notificationclick', event => {
   event.waitUntil(
     clients.openWindow('./index.html')
   );
+});
+
+// Message handling for update notifications
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+  
+  if (event.data && event.data.type === 'GET_VERSION') {
+    event.ports[0].postMessage({ version: cacheName });
+  }
 });

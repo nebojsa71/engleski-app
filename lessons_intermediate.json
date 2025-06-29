@@ -1,0 +1,587 @@
+[
+  {
+    "title": "Putovanje i transport",
+    "phrases": [
+      {
+        "eng": "I've been planning this trip for months.",
+        "sr": "Planirao sam ovo putovanje mesecima.",
+        "pron": "ajv bin planing dis trip for manths"
+      },
+      {
+        "eng": "The flight was delayed due to bad weather.",
+        "sr": "Let je odložen zbog lošeg vremena.",
+        "pron": "d flajt voz dilejd dju tu bed ved'r"
+      },
+      {
+        "eng": "Could you recommend a good hotel nearby?",
+        "sr": "Možete li preporučiti dobar hotel u blizini?",
+        "pron": "kud ju rekomend e gud hotel nirbaj"
+      },
+      {
+        "eng": "I'd like to rent a car for the weekend.",
+        "sr": "Želeo bih da iznajmim auto za vikend.",
+        "pron": "ajd lajk tu rent e kar for d wikend"
+      },
+      {
+        "eng": "What's the best way to get to the city center?",
+        "sr": "Koji je najbolji način da stignem do centra grada?",
+        "pron": "vots d best wej tu get tu d siti sent'r"
+      },
+      {
+        "eng": "The train leaves every thirty minutes.",
+        "sr": "Voz polazi svakih trideset minuta.",
+        "pron": "d trejn livz evri thirti minits"
+      },
+      {
+        "eng": "I prefer traveling by train rather than by bus.",
+        "sr": "Više volim da putujem vozom nego autobusom.",
+        "pron": "aj prif'r treveling baj trejn rad'r den baj bas"
+      },
+      {
+        "eng": "We should arrive at the airport two hours before departure.",
+        "sr": "Trebalo bi da stignemo na aerodrom dva sata pre polaska.",
+        "pron": "wi šud erajv et d erport tu au'rs bifor dipač'r"
+      }
+    ]
+  },
+  {
+    "title": "Restoran i hrana",
+    "phrases": [
+      {
+        "eng": "I'm allergic to nuts, so please be careful with the ingredients.",
+        "sr": "Alergičan sam na orašaste plodove, pa molim vas budite pažljivi sa sastojcima.",
+        "pron": "ajm elerdžik tu nats, sou pliz bi ke'ful wid d ingridients"
+      },
+      {
+        "eng": "Could you bring me the wine list, please?",
+        "sr": "Možete li mi doneti listu vina, molim vas?",
+        "pron": "kud ju bring mi d wajn list, pliz"
+      },
+      {
+        "eng": "I'd like to try the local specialty of this region.",
+        "sr": "Želeo bih da probam lokalnu specijalnost ovog kraja.",
+        "pron": "ajd lajk tu traj d lokl spešalti of dis ridžn"
+      },
+      {
+        "eng": "The food here is absolutely delicious!",
+        "sr": "Hrana ovde je apsolutno ukusna!",
+        "pron": "d fud hir iz ebsolutli dilišs"
+      },
+      {
+        "eng": "Would you mind if I asked for the recipe?",
+        "sr": "Da li bi vam smetalo da pitam za recept?",
+        "pron": "wud ju majnd if aj askt for d resipi"
+      },
+      {
+        "eng": "I usually prefer vegetarian options when available.",
+        "sr": "Obično preferiram vegetarijanske opcije kada su dostupne.",
+        "pron": "aj južuali prif'r vegeterijan opšnz wen eveljebl"
+      },
+      {
+        "eng": "The service here is excellent, and the atmosphere is very pleasant.",
+        "sr": "Usluga ovde je odlična, a atmosfera je veoma prijatna.",
+        "pron": "d servis hir iz ekselent, end d etmosfir iz veri pleznt"
+      },
+      {
+        "eng": "Could we have separate bills, please?",
+        "sr": "Možemo li imati odvojene račune, molim vas?",
+        "pron": "kud wi hev sepret bilz, pliz"
+      }
+    ]
+  },
+  {
+    "title": "Kupovina i trgovina",
+    "phrases": [
+      {
+        "eng": "I'm looking for something that would make a good gift.",
+        "sr": "Tražim nešto što bi bilo dobar poklon.",
+        "pron": "ajm luki for samthing det wud mejk e gud gift"
+      },
+      {
+        "eng": "Do you offer any discounts for students?",
+        "sr": "Da li nudite popuste za studente?",
+        "pron": "du ju of'r eni diskounts for stjudents"
+      },
+      {
+        "eng": "I'd like to return this item as it doesn't fit properly.",
+        "sr": "Želeo bih da vratim ovu stvar jer mi ne odgovara.",
+        "pron": "ajd lajk tu rit'n dis ajtem ez it daznt fit prop'li"
+      },
+      {
+        "eng": "Could you tell me where the nearest ATM is located?",
+        "sr": "Možete li mi reći gde se nalazi najbliži bankomat?",
+        "pron": "kud ju tel mi wer d nierest ej-ti-em iz loukejtid"
+      },
+      {
+        "eng": "I prefer to pay with a credit card rather than cash.",
+        "sr": "Više volim da plaćam kreditnom karticom nego gotovinom.",
+        "pron": "aj prif'r tu pej wid e kredit kard rad'r den keš"
+      },
+      {
+        "eng": "The quality of this product seems to be quite good.",
+        "sr": "Kvalitet ovog proizvoda izgleda da je prilično dobar.",
+        "pron": "d kvaliti of dis produkt simz tu bi kwajt gud"
+      },
+      {
+        "eng": "I'm not sure about the size, could I try on a different one?",
+        "sr": "Nisam siguran oko veličine, mogu li da probam drugu?",
+        "pron": "ajm not šur ebaut d sajz, kud aj traj on e diferent wan"
+      },
+      {
+        "eng": "Do you have this in any other colors?",
+        "sr": "Imate li ovo u nekim drugim bojama?",
+        "pron": "du ju hev dis in eni ad'r kal'rs"
+      }
+    ]
+  },
+  {
+    "title": "Hotel i smeštaj",
+    "phrases": [
+      {
+        "eng": "I made a reservation online, but I'd like to confirm it.",
+        "sr": "Napravio sam rezervaciju online, ali želeo bih da je potvrdim.",
+        "pron": "aj mejd e rezervejšn onlajn, bat ajd lajk tu konfirm it"
+      },
+      {
+        "eng": "Could you please provide me with a wake-up call at 7 AM?",
+        "sr": "Možete li mi, molim vas, obezbediti buđenje u 7 ujutru?",
+        "pron": "kud ju pliz prevajd mi wid e wejk-ap kol et sevn ej-em"
+      },
+      {
+        "eng": "The air conditioning in my room isn't working properly.",
+        "sr": "Klima uređaj u mojoj sobi ne radi kako treba.",
+        "pron": "d er kondišning in maj rum iznt workin prop'li"
+      },
+      {
+        "eng": "I'd like to extend my stay for another two nights.",
+        "sr": "Želeo bih da produžim boravak još dve noći.",
+        "pron": "ajd lajk tu ekstend maj stej for enad'r tu najts"
+      },
+      {
+        "eng": "Could you recommend some good restaurants in the area?",
+        "sr": "Možete li preporučiti neke dobre restorane u okolini?",
+        "pron": "kud ju rekomend sam gud restorants in d eria"
+      },
+      {
+        "eng": "The internet connection in my room is quite slow.",
+        "sr": "Internet konekcija u mojoj sobi je prilično spora.",
+        "pron": "d internet konekšn in maj rum iz kwajt slou"
+      },
+      {
+        "eng": "I'd like to have my room cleaned while I'm out.",
+        "sr": "Želeo bih da mi se soba očisti dok sam napolju.",
+        "pron": "ajd lajk tu hev maj rum klind wail ajm aut"
+      },
+      {
+        "eng": "Could you arrange a taxi for me to the airport tomorrow?",
+        "sr": "Možete li mi obezbediti taksi za aerodrom sutra?",
+        "pron": "kud ju erejndž e teksi for mi tu d erport tumorou"
+      }
+    ]
+  },
+  {
+    "title": "Zdravlje i medicina",
+    "phrases": [
+      {
+        "eng": "I've been feeling unwell for the past few days.",
+        "sr": "Osećam se loše poslednjih nekoliko dana.",
+        "pron": "ajv bin filing anwel for d past fju dejz"
+      },
+      {
+        "eng": "Could you recommend a good doctor who speaks English?",
+        "sr": "Možete li preporučiti dobrog lekara koji govori engleski?",
+        "pron": "kud ju rekomend e gud dokt'r hu spiks ingliš"
+      },
+      {
+        "eng": "I have an allergy to penicillin, so please be careful.",
+        "sr": "Imam alergiju na penicilin, pa molim vas budite pažljivi.",
+        "pron": "aj hev en elerdži tu penisilin, sou pliz bi ke'ful"
+      },
+      {
+        "eng": "The pain has been getting worse over the last week.",
+        "sr": "Bol se pogoršavao tokom prošle nedelje.",
+        "pron": "d pejn hez bin geting wors ouver d last wik"
+      },
+      {
+        "eng": "I'd like to make an appointment with a specialist.",
+        "sr": "Želeo bih da zakazem termin kod specijaliste.",
+        "pron": "ajd lajk tu mejk en epointment wid e spešalist"
+      },
+      {
+        "eng": "Could you explain what this medication is for?",
+        "sr": "Možete li objasniti za šta je ovaj lek?",
+        "pron": "kud ju eksplejn vot dis medikejšn iz for"
+      },
+      {
+        "eng": "I need to get a prescription refill for my regular medication.",
+        "sr": "Treba mi da obnovim recept za redovan lek.",
+        "pron": "aj nid tu get e priskripšn rifil for maj regjul'r medikejšn"
+      },
+      {
+        "eng": "The symptoms started appearing about three days ago.",
+        "sr": "Simptomi su se počeli pojavljivati pre oko tri dana.",
+        "pron": "d simptoms startid epiring ebaut thri dejz egou"
+      }
+    ]
+  },
+  {
+    "title": "Posao i poslovni sastanci",
+    "phrases": [
+      {
+        "eng": "I'd like to schedule a meeting for next week if possible.",
+        "sr": "Želeo bih da zakazem sastanak za sledeću nedelju ako je moguće.",
+        "pron": "ajd lajk tu šedjul e miting for nekst wik if posibl"
+      },
+      {
+        "eng": "Could you send me the agenda before the meeting?",
+        "sr": "Možete li mi poslati dnevni red pre sastanka?",
+        "pron": "kud ju send mi d edženda bifor d miting"
+      },
+      {
+        "eng": "I think we should discuss this matter in more detail.",
+        "sr": "Mislim da bismo trebali da razgovaramo o ovom pitanju detaljnije.",
+        "pron": "aj think wi šud diskas dis met'r in mor ditejl"
+      },
+      {
+        "eng": "The presentation went very well, and everyone seemed interested.",
+        "sr": "Prezentacija je prošla veoma dobro, i svi su izgledali zainteresovani.",
+        "pron": "d prezentejšn went veri wel, end evriwan simd interesid"
+      },
+      {
+        "eng": "I'd like to propose a different approach to this problem.",
+        "sr": "Želeo bih da predložim drugačiji pristup ovom problemu.",
+        "pron": "ajd lajk tu prepouz e diferent eprouč tu dis problem"
+      },
+      {
+        "eng": "Could you please provide me with more information about this project?",
+        "sr": "Možete li mi, molim vas, dati više informacija o ovom projektu?",
+        "pron": "kud ju pliz prevajd mi wid mor informejšn ebaut dis prodžekt"
+      },
+      {
+        "eng": "I believe we need to reconsider our strategy for this quarter.",
+        "sr": "Verujem da trebamo da preispitamo našu strategiju za ovaj kvartal.",
+        "pron": "aj biliw wi nid tu rikonsid'r aur streteđži for dis kwort'r"
+      },
+      {
+        "eng": "The deadline for this project has been extended until next month.",
+        "sr": "Rok za ovaj projekat je produžen do sledećeg meseca.",
+        "pron": "d dedlajn for dis prodžekt hez bin ekstendid antil nekst manth"
+      }
+    ]
+  },
+  {
+    "title": "Edukacija i učenje",
+    "phrases": [
+      {
+        "eng": "I've been studying English for the past three years.",
+        "sr": "Učim engleski poslednje tri godine.",
+        "pron": "ajv bin stading ingliš for d past thri jirz"
+      },
+      {
+        "eng": "Could you recommend some good books for improving my vocabulary?",
+        "sr": "Možete li preporučiti neke dobre knjige za poboljšanje vokabulara?",
+        "pron": "kud ju rekomend sam gud buks for impruving maj voukebjulari"
+      },
+      {
+        "eng": "I find it difficult to understand native speakers sometimes.",
+        "sr": "Ponekad mi je teško da razumem izvorne govornike.",
+        "pron": "aj fajnd it difikalt tu anderstend nejtiv spik'rs samtajmz"
+      },
+      {
+        "eng": "The grammar rules in English can be quite confusing at first.",
+        "sr": "Gramatička pravila u engleskom mogu biti prilično zbunjujuća na početku.",
+        "pron": "d grem'r rulz in ingliš ken bi kwajt konfjuzing et ferst"
+      },
+      {
+        "eng": "I'd like to practice speaking English with native speakers.",
+        "sr": "Želeo bih da vežbam govor engleskog sa izvornim govornicima.",
+        "pron": "ajd lajk tu prektis spiking ingliš wid nejtiv spik'rs"
+      },
+      {
+        "eng": "Could you explain the difference between these two words?",
+        "sr": "Možete li objasniti razliku između ove dve reči?",
+        "pron": "kud ju eksplejn d diferens bitwin diz tu werdz"
+      },
+      {
+        "eng": "I'm trying to improve my pronunciation of difficult words.",
+        "sr": "Pokušavam da poboljšam svoj izgovor teških reči.",
+        "pron": "ajm trajing tu impruv maj pranansiejšn of difikalt werdz"
+      },
+      {
+        "eng": "The course material is quite challenging but very interesting.",
+        "sr": "Materijal kursa je prilično izazovan ali veoma zanimljiv.",
+        "pron": "d kors metirial iz kwajt čelendžing bat veri interesing"
+      }
+    ]
+  },
+  {
+    "title": "Tehnologija i internet",
+    "phrases": [
+      {
+        "eng": "I'm having trouble connecting to the Wi-Fi network.",
+        "sr": "Imam problema sa povezivanjem na Wi-Fi mrežu.",
+        "pron": "ajm heving trabl konekting tu d waj-faj netwerk"
+      },
+      {
+        "eng": "Could you help me set up my email account on this device?",
+        "sr": "Možete li mi pomoći da podesim svoj email nalog na ovom uređaju?",
+        "pron": "kud ju help mi set ap maj imejl ekaunt on dis divajs"
+      },
+      {
+        "eng": "The battery life on my phone has been getting worse lately.",
+        "sr": "Trajanje baterije na mom telefonu se pogoršava u poslednje vreme.",
+        "pron": "d betri lajf on maj foun hez bin geting wors lejtli"
+      },
+      {
+        "eng": "I need to download some important files from the cloud.",
+        "sr": "Treba mi da preuzmem neke važne fajlove iz oblaka.",
+        "pron": "aj nid tu daunloud sam important fajlz from d klaud"
+      },
+      {
+        "eng": "Could you recommend a good antivirus software?",
+        "sr": "Možete li preporučiti dobar antivirus program?",
+        "pron": "kud ju rekomend e gud entivajrus softwer"
+      },
+      {
+        "eng": "I'm trying to learn how to use this new software.",
+        "sr": "Pokušavam da naučim kako da koristim ovaj novi program.",
+        "pron": "ajm trajing tu lern hau tu juz dis nju softwer"
+      },
+      {
+        "eng": "The internet speed here is much faster than at my home.",
+        "sr": "Brzina interneta ovde je mnogo brža nego kod kuće.",
+        "pron": "d internet spid hir iz mač fester den et maj houm"
+      },
+      {
+        "eng": "I'd like to back up my important data before traveling.",
+        "sr": "Želeo bih da napravim rezervnu kopiju važnih podataka pre putovanja.",
+        "pron": "ajd lajk tu bek ap maj important dejta bifor treveling"
+      }
+    ]
+  },
+  {
+    "title": "Sport i rekreacija",
+    "phrases": [
+      {
+        "eng": "I've been playing tennis for over ten years now.",
+        "sr": "Igram tenis više od deset godina sada.",
+        "pron": "ajv bin plejing tenis for ouver ten jirz nau"
+      },
+      {
+        "eng": "Could you recommend a good gym near the city center?",
+        "sr": "Možete li preporučiti dobar teretanu blizu centra grada?",
+        "pron": "kud ju rekomend e gud džim nir d siti sent'r"
+      },
+      {
+        "eng": "I'm trying to get back into shape after a long break.",
+        "sr": "Pokušavam da se vratim u formu nakon dugog odmora.",
+        "pron": "ajm trajing tu get bek intu šejp after e long brejk"
+      },
+      {
+        "eng": "The weather is perfect for going hiking this weekend.",
+        "sr": "Vreme je savršeno za planinarenje ovog vikenda.",
+        "pron": "d ved'r iz perfekt for going hajking dis wikend"
+      },
+      {
+        "eng": "I'd like to join a local sports club to meet new people.",
+        "sr": "Želeo bih da se pridružim lokalnom sportskom klubu da upoznam nove ljude.",
+        "pron": "ajd lajk tu džojn e lokl sports klab tu mit nju pip'l"
+      },
+      {
+        "eng": "Could you teach me how to play this game?",
+        "sr": "Možete li me naučiti kako da igram ovu igru?",
+        "pron": "kud ju tič mi hau tu plej dis gejm"
+      },
+      {
+        "eng": "I'm not very good at swimming, but I'm trying to improve.",
+        "sr": "Nisam baš dobar u plivanju, ali pokušavam da se poboljšam.",
+        "pron": "ajm not veri gud et swiming, bat ajm trajing tu impruv"
+      },
+      {
+        "eng": "The team has been practicing really hard for the upcoming tournament.",
+        "sr": "Tim vežba zaista naporno za predstojeći turnir.",
+        "pron": "d tim hez bin prektising rili hard for d apkaming turnament"
+      }
+    ]
+  },
+  {
+    "title": "Kultura i umetnost",
+    "phrases": [
+      {
+        "eng": "I've been interested in classical music since I was a child.",
+        "sr": "Zainteresovan sam za klasičnu muziku od detinjstva.",
+        "pron": "ajv bin interesid in klesikal mjuzik sins aj voz e čajld"
+      },
+      {
+        "eng": "Could you recommend some good museums to visit in this city?",
+        "sr": "Možete li preporučiti neke dobre muzeje za posetu u ovom gradu?",
+        "pron": "kud ju rekomend sam gud mjuzijumz tu vizit in dis siti"
+      },
+      {
+        "eng": "I'm trying to learn how to play the guitar in my free time.",
+        "sr": "Pokušavam da naučim kako da sviram gitaru u slobodno vreme.",
+        "pron": "ajm trajing tu lern hau tu plej d gitar in maj fri tajm"
+      },
+      {
+        "eng": "The art exhibition was absolutely amazing and inspiring.",
+        "sr": "Umetnička izložba je bila apsolutno neverovatna i inspirativna.",
+        "pron": "d art eksibišn voz ebsolutli emejzing end inspiring"
+      },
+      {
+        "eng": "I'd like to attend a classical concert this weekend.",
+        "sr": "Želeo bih da prisustvujem klasičnom koncertu ovog vikenda.",
+        "pron": "ajd lajk tu etend e klesikal konsert dis wikend"
+      },
+      {
+        "eng": "Could you tell me more about the history of this building?",
+        "sr": "Možete li mi reći više o istoriji ove zgrade?",
+        "pron": "kud ju tel mi mor ebaut d histori of dis bilding"
+      },
+      {
+        "eng": "I'm reading a fascinating book about ancient civilizations.",
+        "sr": "Čitam fascinantnu knjigu o drevnim civilizacijama.",
+        "pron": "ajm riding e fesinejting buk ebaut ejnšent sivilizejšnz"
+      },
+      {
+        "eng": "The theater performance was outstanding and very well-acted.",
+        "sr": "Pozorišna predstava je bila izvanredna i veoma dobro odglumljena.",
+        "pron": "d thiet'r perfomans voz autstending end veri wel-ekted"
+      }
+    ]
+  },
+  {
+    "title": "Priroda i životna sredina",
+    "phrases": [
+      {
+        "eng": "I've been concerned about climate change for several years now.",
+        "sr": "Zabrinut sam zbog klimatskih promena već nekoliko godina.",
+        "pron": "ajv bin konsernd ebaut klajmet čejndž for sev'ral jirz nau"
+      },
+      {
+        "eng": "Could you recommend some eco-friendly products?",
+        "sr": "Možete li preporučiti neke ekološki prihvatljive proizvode?",
+        "pron": "kud ju rekomend sam ikou-frendli produkts"
+      },
+      {
+        "eng": "I'm trying to reduce my carbon footprint by using public transport.",
+        "sr": "Pokušavam da smanjim svoj ugljenični otisak korišćenjem javnog prevoza.",
+        "pron": "ajm trajing tu ridjus maj karbon futprint baj juzing pablik transport"
+      },
+      {
+        "eng": "The national park is home to many endangered species.",
+        "sr": "Nacionalni park je dom mnogim ugroženim vrstama.",
+        "pron": "d nešnal park iz houm tu meni endejndžerd spišiz"
+      },
+      {
+        "eng": "I'd like to volunteer for environmental conservation projects.",
+        "sr": "Želeo bih da volontiram na projektima zaštite životne sredine.",
+        "pron": "ajd lajk tu volentir for invajronmental konservejšn prodžekts"
+      },
+      {
+        "eng": "Could you explain how recycling helps the environment?",
+        "sr": "Možete li objasniti kako recikliranje pomaže životnoj sredini?",
+        "pron": "kud ju eksplejn hau ri-sajkling helps d invajronment"
+      },
+      {
+        "eng": "I'm learning about sustainable farming practices.",
+        "sr": "Učim o održivim poljoprivrednim praksama.",
+        "pron": "ajm lernig ebaut sastejnebl farming prektisis"
+      },
+      {
+        "eng": "The air quality in this city has improved significantly over the years.",
+        "sr": "Kvalitet vazduha u ovom gradu se značajno poboljšao tokom godina.",
+        "pron": "d er kvaliti in dis siti hez impruvd signifikantli ouver d jirz"
+      }
+    ]
+  },
+  {
+    "title": "Društvo i odnosi",
+    "phrases": [
+      {
+        "eng": "I've been friends with her since we were in high school together.",
+        "sr": "Prijatelji smo od kada smo bili zajedno u srednjoj školi.",
+        "pron": "ajv bin frendz wid her sins wi wer in haj skul tugeđ'r"
+      },
+      {
+        "eng": "Could you introduce me to some of your colleagues?",
+        "sr": "Možete li me upoznati sa nekim od vaših kolega?",
+        "pron": "kud ju introdujs mi tu sam of jor koligz"
+      },
+      {
+        "eng": "I'm trying to build better relationships with my neighbors.",
+        "sr": "Pokušavam da izgradim bolje odnose sa svojim komšijama.",
+        "pron": "ajm trajing tu bild bet'r rilejšnšips wid maj nejb'rs"
+      },
+      {
+        "eng": "The community here is very welcoming and supportive.",
+        "sr": "Zajednica ovde je veoma gostoljubiva i podržavajuća.",
+        "pron": "d komjuniti hir iz veri welkaming end saportiv"
+      },
+      {
+        "eng": "I'd like to get involved in local community activities.",
+        "sr": "Želeo bih da se uključim u lokalne aktivnosti zajednice.",
+        "pron": "ajd lajk tu get involvd in lokl komjuniti ektivitis"
+      },
+      {
+        "eng": "Could you help me understand the cultural differences here?",
+        "sr": "Možete li mi pomoći da razumem kulturne razlike ovde?",
+        "pron": "kud ju help mi anderstend d kultural diferensiz hir"
+      },
+      {
+        "eng": "I'm learning about the local customs and traditions.",
+        "sr": "Učim o lokalnim običajima i tradicijama.",
+        "pron": "ajm lernig ebaut d lokl kastoms end tredešnz"
+      },
+      {
+        "eng": "The people here are very friendly and always willing to help.",
+        "sr": "Ljudi ovde su veoma prijateljski nastrojeni i uvek spremni da pomognu.",
+        "pron": "d pip'l hir ar veri frendli end olwejs wiling tu help"
+      }
+    ]
+  },
+  {
+    "title": "Finansije i ekonomija",
+    "phrases": [
+      {
+        "eng": "I've been saving money for a down payment on a house.",
+        "sr": "Štedim novac za učešće za kuću.",
+        "pron": "ajv bin sejving mani for e daun pejment on e haus"
+      },
+      {
+        "eng": "Could you recommend a good investment strategy for beginners?",
+        "sr": "Možete li preporučiti dobru investicionu strategiju za početnike?",
+        "pron": "kud ju rekomend e gud investment streteđži for begin'rs"
+      },
+      {
+        "eng": "I'm trying to create a budget to better manage my expenses.",
+        "sr": "Pokušavam da napravim budžet da bolje upravljam svojim troškovima.",
+        "pron": "ajm trajing tu kriet e badžet tu bet'r menidž maj ekspensiz"
+      },
+      {
+        "eng": "The interest rates have been increasing steadily over the past year.",
+        "sr": "Kamatne stope se stalno povećavaju tokom prošle godine.",
+        "pron": "d interes rejts hev bin inkrising stedili ouver d past jir"
+      },
+      {
+        "eng": "I'd like to open a savings account with better interest rates.",
+        "sr": "Želeo bih da otvorim štedni račun sa boljim kamatnim stopama.",
+        "pron": "ajd lajk tu open e sejvingz ekaunt wid bet'r interes rejts"
+      },
+      {
+        "eng": "Could you explain how the stock market works?",
+        "sr": "Možete li objasniti kako funkcioniše berza?",
+        "pron": "kud ju eksplejn hau d stok market werks"
+      },
+      {
+        "eng": "I'm considering taking out a loan to start my own business.",
+        "sr": "Razmišljam o uzimanju kredita da pokrenem svoj posao.",
+        "pron": "ajm konsidering tejking aut e loun tu start maj oun biznis"
+      },
+      {
+        "eng": "The economy has been showing signs of recovery recently.",
+        "sr": "Ekonomija pokazuje znakove oporavka u poslednje vreme.",
+        "pron": "d ikonomi hez bin šouing sajnz of rikavri risentli"
+      }
+    ]
+  }
+]

@@ -29,7 +29,7 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #667eea 0%, #ff6b6b 100%);
       min-height: 100vh;
       color: #1f2937;
       line-height: 1.6;
@@ -51,6 +51,36 @@
 
     .header-title {
       margin-bottom: 0.5rem;
+    }
+
+    .level-selector {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .level-btn {
+      padding: 0.5rem 1rem;
+      border: 2px solid #6366f1;
+      background: white;
+      color: #6366f1;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .level-btn.active {
+      background: #6366f1;
+      color: white;
+    }
+
+    .level-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
     }
 
     .header-progress {
@@ -991,6 +1021,165 @@
     body.dark #install-button:hover {
       box-shadow: 0 12px 35px rgba(129, 140, 248, 0.4) !important;
     }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      margin: 15% auto;
+      padding: 2rem;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: modalSlideIn 0.3s ease-out;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal h3 {
+      color: #1f2937;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .modal p {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .modal-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .modal-btn.primary {
+      background: #6366f1;
+      color: white;
+    }
+
+    .modal-btn.primary:hover {
+      background: #5855eb;
+      transform: translateY(-2px);
+    }
+
+    .modal-btn.secondary {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    .modal-btn.secondary:hover {
+      background: #e5e7eb;
+    }
+
+    /* Update notification */
+    .update-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+      z-index: 1001;
+      display: none;
+      animation: slideInRight 0.3s ease-out;
+      max-width: 300px;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .update-notification h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .update-notification p {
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .update-notification .update-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+    }
+
+    .update-notification .update-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .update-notification .close-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .update-notification .close-btn:hover {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -1009,6 +1198,11 @@
   <div class="main-content" id="main-content">
     <header>
       <div class="header-title">🌍 PutujGovori</div>
+      <div class="level-selector">
+        <button class="level-btn" onclick="selectLevel('beginner')">Osnovni</button>
+        <button class="level-btn" onclick="selectLevel('intermediate')">Srednji</button>
+        <button class="level-btn" onclick="selectLevel('advanced')">Napredni</button>
+      </div>
       <div class="header-progress">
         <span id="header-progress-text">0%</span>
         <div class="header-progress-bar">
@@ -1025,9 +1219,53 @@
     </div>
   </div>
 
+  <!-- Update notification -->
+  <div id="updateNotification" class="update-notification">
+    <button class="close-btn" onclick="hideUpdateNotification()">×</button>
+    <h4>🔄 Nova verzija dostupna</h4>
+    <p>Dostupna je nova verzija aplikacije sa poboljšanjima i novim funkcionalnostima.</p>
+    <button class="update-btn" onclick="updateApp()">Ažuriraj sada</button>
+  </div>
+
+  <!-- Reset Progress Modal -->
+  <div id="resetModal" class="modal">
+    <div class="modal-content">
+      <h3>🔄 Resetuj napredak</h3>
+      <p>Da li ste sigurni da želite da obrišete sav napredak i počnete iznova? Ova akcija se ne može poništiti.</p>
+      <div class="modal-buttons">
+        <button class="modal-btn secondary" onclick="closeResetModal()">Otkaži</button>
+        <button class="modal-btn primary" onclick="confirmReset()">Obriši sve</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <h3>✅ Uspešno!</h3>
+      <p id="successMessage">Operacija je uspešno završena.</p>
+      <div class="modal-buttons">
+        <button class="modal-btn primary" onclick="closeSuccessModal()">U redu</button>
+      </div>
+    </div>
+  </div>
+
   <script>
   // PWA Installation functionality - moved to the beginning
   let deferredPrompt;
+  
+  // Enhanced debugging for mobile
+  console.log('=== PWA DEBUG INFO ===');
+  console.log('URL:', window.location.href);
+  console.log('User Agent:', navigator.userAgent);
+  console.log('Is Mobile:', /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+  console.log('Is HTTPS:', location.protocol === 'https:');
+  console.log('Is localhost:', location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+  console.log('Is GitHub Pages:', location.hostname.includes('github.io'));
+  console.log('Is standalone:', window.matchMedia('(display-mode: standalone)').matches);
+  console.log('Navigator standalone:', window.navigator.standalone);
+  console.log('Service Worker support:', 'serviceWorker' in navigator);
+  console.log('BeforeInstallPrompt support:', 'onbeforeinstallprompt' in window);
   
   // Check installation status
   function checkInstallationStatus() {
@@ -1143,20 +1381,56 @@
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./service-worker.js')
         .then(registration => {
-          console.log('ServiceWorker registered successfully');
+          console.log('✅ ServiceWorker registered successfully:', registration);
+          console.log('Service Worker state:', registration.active ? 'active' : 'not active');
         })
         .catch(error => {
-          console.log('ServiceWorker registration failed:', error);
+          console.log('❌ ServiceWorker registration failed:', error);
         });
     });
   }
 
+  // Check manifest
+  fetch('./manifest.json')
+    .then(response => response.json())
+    .then(manifest => {
+      console.log('✅ Manifest loaded successfully:', manifest);
+      console.log('Manifest start_url:', manifest.start_url);
+      console.log('Manifest scope:', manifest.scope);
+    })
+    .catch(error => {
+      console.log('❌ Manifest loading failed:', error);
+    });
+
   function updateProgress(total) {
-    let done = 0;
-    for (let i = 0; i < total; i++) {
-      if (localStorage.getItem('lesson_' + i) === 'done') done++;
-    }
-    const percent = Math.round(done / total * 100);
+    // Broji ukupan broj završenih lekcija iz svih nivoa
+    let totalCompleted = 0;
+    let totalLessons = 0;
+    
+    const levels = ['beginner', 'intermediate', 'advanced'];
+    levels.forEach(level => {
+      if (lessonsData[level]) {
+        const levelLessons = lessonsData[level].length;
+        totalLessons += levelLessons;
+        
+        for (let i = 0; i < levelLessons; i++) {
+          if (localStorage.getItem(`lesson_${level}_${i}`) === 'done') {
+            totalCompleted++;
+          }
+        }
+      } else {
+        // Ako nivo nije učitan, dodaj default broj lekcija
+        totalLessons += 15;
+        
+        for (let i = 0; i < 15; i++) {
+          if (localStorage.getItem(`lesson_${level}_${i}`) === 'done') {
+            totalCompleted++;
+          }
+        }
+      }
+    });
+    
+    const percent = totalLessons > 0 ? Math.round(totalCompleted / totalLessons * 100) : 0;
     
     // Update header progress
     document.getElementById('header-progress-text').innerText = percent + '%';
@@ -1203,7 +1477,7 @@
     `;
     
     // Check if lesson is completed
-    if (localStorage.getItem('lesson_' + index) === 'done') {
+    if (localStorage.getItem(`lesson_${currentLevel}_${index}`) === 'done') {
       div.style.borderColor = '#10b981';
       div.style.background = 'linear-gradient(135deg, #f0fdf4, #dcfce7)';
     }
@@ -1272,7 +1546,7 @@
     `;
     
     // Add completion indicator
-    if (localStorage.getItem('lesson_' + index) === 'done') {
+    if (localStorage.getItem(`lesson_${currentLevel}_${index}`) === 'done') {
       const completed = document.createElement('div');
       completed.innerHTML = '✅ Završeno';
       completed.style.cssText = `
@@ -1404,7 +1678,7 @@
     quizBtn.onclick = (e) => {
       e.stopPropagation();
       modalOverlay.remove(); // Close lesson modal first
-      startQuiz(index, lesson); // Start quiz in new modal
+      startQuiz(index, lesson, currentLevel); // Start quiz in new modal
     };
     
     modalBody.appendChild(quizBtn);
@@ -1425,7 +1699,7 @@
     document.body.appendChild(modalOverlay);
   }
 
-  function startQuiz(index, lesson) {
+  function startQuiz(index, lesson, level) {
     // Create modal overlay
     const modalOverlay = document.createElement('div');
     modalOverlay.className = 'modal-overlay';
@@ -1480,10 +1754,12 @@
             🎉 Odlično! Rezultat: <strong>${correct}/${total}</strong>
             <div class="quiz-feedback">Svaka čast! Uspešno ste završili lekciju.</div>
           `;
-          localStorage.setItem('lesson_' + index, 'done');
+          localStorage.setItem(`lesson_${level}_${index}`, 'done');
           updateProgress(lessonCount);
-          // Refresh the lesson card to show completion
-          location.reload();
+          updateMenuStats(); // Ažuriraj statistiku u meniju
+          loadLessons(currentLevel); // Osveži prikaz lekcija
+          updateLevelCompletionIndicators(); // Update level indicators
+          // location.reload(); // uklonjeno
         } else if (correct >= 3) {
           resultDiv.classList.add('good');
           resultDiv.innerHTML = `
@@ -1550,25 +1826,27 @@
         btn.textContent = ans;
         btn.className = 'quiz-option';
         btn.onclick = () => {
+          // Ažuriraj statistiku kvizova
+          let quizStats = JSON.parse(localStorage.getItem('quizStats') || '{}');
+          quizStats.answered = (quizStats.answered || 0) + 1;
           if (ans === q.sr) {
             correct++;
+            quizStats.correct = (quizStats.correct || 0) + 1;
             btn.classList.add('correct');
           } else {
             btn.classList.add('incorrect');
           }
-          
+          localStorage.setItem('quizStats', JSON.stringify(quizStats));
           // Disable all buttons and add disabled class
           document.querySelectorAll('.quiz-option').forEach(option => {
             option.classList.add('disabled');
             option.style.pointerEvents = 'none';
           });
-          
           // Update progress in header
           const progressDiv = modalBody.querySelector('.quiz-progress');
           if (progressDiv) {
             progressDiv.textContent = `${correct} tačnih`;
           }
-          
           setTimeout(() => {
             current++;
             showQuestion();
@@ -1584,37 +1862,178 @@
   }
 
   let lessonCount = 0;
+  let currentLevel = 'beginner';
+  let lessonsData = {};
 
-  fetch('lessons.json?v=' + Date.now())
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-      return res.json();
-    })
-    .then(data => {
-      lessonCount = data.length;
-      document.getElementById('lessons').innerHTML = '';
-      
-      const lessonsGrid = document.createElement('div');
-      lessonsGrid.className = 'lessons-grid';
-      lessonsGrid.style.cssText = `
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
-        padding: 1rem;
-      `;
-      
-      document.getElementById('lessons').appendChild(lessonsGrid);
-      
-      data.forEach((lesson, i) => createLesson(i, lesson));
-      updateProgress(lessonCount);
-      showPhraseOfDay(data);
-    })
-    .catch(err => {
-      document.getElementById('lessons').innerHTML = '<div class="error">❌ Greška pri učitavanju lekcija. Molimo pokušajte ponovo.</div>';
-      console.error('Error loading lessons:', err);
+  // Function to select level
+  function selectLevel(level) {
+    currentLevel = level;
+    
+    // Update active button
+    document.querySelectorAll('.level-btn').forEach(btn => {
+      btn.classList.remove('active');
     });
+    event.target.classList.add('active');
+    
+    // Add completion indicator to level buttons
+    updateLevelCompletionIndicators();
+    
+    // Load lessons for selected level
+    loadLessons(level);
+    
+    // Update level completion indicators after loading lessons
+    setTimeout(() => {
+      updateLevelCompletionIndicators();
+    }, 500);
+  }
+
+  // Function to update level completion indicators
+  function updateLevelCompletionIndicators() {
+    const levels = ['beginner', 'intermediate', 'advanced'];
+    levels.forEach(level => {
+      const btn = document.querySelector(`[onclick="selectLevel('${level}')"]`);
+      if (btn) {
+        // Remove existing completion indicator
+        const existingIndicator = btn.querySelector('.level-completion-indicator');
+        if (existingIndicator) {
+          existingIndicator.remove();
+        }
+        
+        // Add completion indicator if level is completed
+        if (isLevelCompleted(level)) {
+          const indicator = document.createElement('span');
+          indicator.className = 'level-completion-indicator';
+          indicator.innerHTML = '🏆';
+          indicator.style.cssText = `
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #10b981;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+          `;
+          btn.style.position = 'relative';
+          btn.appendChild(indicator);
+        }
+      }
+    });
+  }
+
+  // Function to load lessons for specific level
+  function loadLessons(level) {
+    const levelFiles = {
+      'beginner': 'lessons.json',
+      'intermediate': 'lessons_intermediate.json',
+      'advanced': 'lessons_advanced.json'
+    };
+
+    const fileName = levelFiles[level];
+    
+    fetch(fileName + '?v=' + Date.now())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        lessonsData[level] = data;
+        lessonCount = data.length;
+        document.getElementById('lessons').innerHTML = '';
+        
+        const lessonsGrid = document.createElement('div');
+        lessonsGrid.className = 'lessons-grid';
+        lessonsGrid.style.cssText = `
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem;
+          padding: 1rem;
+        `;
+        
+        document.getElementById('lessons').appendChild(lessonsGrid);
+        
+        data.forEach((lesson, i) => createLesson(i, lesson));
+        updateProgress(lessonCount);
+        
+        // Check if all lessons are completed and show advanced quiz button
+        if (areAllLessonsCompleted(level) && !isLevelCompleted(level)) {
+          const advancedQuizBtn = document.createElement('button');
+          advancedQuizBtn.innerHTML = '🏆 Napredni kviz nivoa (20 pitanja)';
+          advancedQuizBtn.className = 'btn';
+          advancedQuizBtn.style.cssText = `
+            width: 100%;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+            transition: all 0.3s ease;
+          `;
+          
+          advancedQuizBtn.onmouseenter = () => {
+            advancedQuizBtn.style.transform = 'translateY(-2px)';
+            advancedQuizBtn.style.boxShadow = '0 12px 35px rgba(245, 158, 11, 0.4)';
+          };
+          
+          advancedQuizBtn.onmouseleave = () => {
+            advancedQuizBtn.style.transform = 'translateY(0)';
+            advancedQuizBtn.style.boxShadow = '0 8px 25px rgba(245, 158, 11, 0.3)';
+          };
+          
+          advancedQuizBtn.onclick = () => {
+            startAdvancedQuiz(level);
+          };
+          
+          document.querySelector('.lessons-grid').appendChild(advancedQuizBtn);
+        }
+        
+        // Update level completion indicators
+        updateLevelCompletionIndicators();
+        
+        // showPhraseOfDay(data); // uklonjeno na zahtev korisnika
+      })
+      .catch(err => {
+        console.error('Error loading lessons:', err);
+        document.getElementById('lessons').innerHTML = '<div class="error">❌ Greška pri učitavanju lekcija. Molimo pokušajte ponovo.</div>';
+      });
+  }
+
+  // Initialize with beginner level
+  document.addEventListener('DOMContentLoaded', function() {
+    // Set beginner as active by default
+    document.querySelector('.level-btn').classList.add('active');
+    loadLessons('beginner');
+    
+    // Update level completion indicators
+    setTimeout(() => {
+      updateLevelCompletionIndicators();
+    }, 1000); // Wait for lessons to load
+    
+    // Check for app updates
+    checkForUpdates();
+    
+    // Listen for service worker messages
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.addEventListener('message', event => {
+        if (event.data && event.data.type === 'SW_ACTIVATED') {
+          console.log('Service Worker activated, checking for updates...');
+          checkForUpdates();
+        }
+      });
+    }
+  });
 
   // Menu modal functionality
   function showMenu() {
@@ -1640,13 +2059,9 @@
         <button id="dark-mode-toggle" class="btn" style="width: 100%; margin-bottom: 0.5rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white;">
           ${document.body.classList.contains('dark') ? '☀️ Svetli režim' : '🌙 Noćni režim'}
         </button>
-      </div>
-      <div style="margin-bottom: 1.5rem;">
-        <h3 style="margin-bottom: 1rem;">📊 Statistika</h3>
-        <div id="menu-stats" style="background: #f3f4f6; padding: 1rem; border-radius: 10px; text-align: center;">
-          <p><strong>Lekcija završeno:</strong> <span id="completed-lessons">0</span>/<span id="total-lessons">0</span></p>
-          <p><strong>Tačnost kvizova:</strong> <span id="quiz-accuracy">0%</span></p>
-        </div>
+        <button id="reset-progress-btn" class="btn" style="width: 100%; margin-bottom: 0.5rem; background: linear-gradient(135deg, #ef4444, #dc2626); color: white;">
+          ♻️ Resetuj napredak
+        </button>
       </div>
       <div style="margin-bottom: 1.5rem;">
         <h3 style="margin-bottom: 1rem;">📱 Instalacija</h3>
@@ -1737,18 +2152,57 @@
         modalOverlay.remove();
       }
     });
+
+    // Reset progress logic
+    setTimeout(() => {
+      const resetBtn = document.getElementById('reset-progress-btn');
+      if (resetBtn) {
+        resetBtn.onclick = () => {
+          showResetModal();
+        };
+      }
+    }, 500);
   }
 
   function updateMenuStats() {
-    const completed = Array.from({length: lessonCount}).filter((_,i)=>localStorage.getItem('lesson_'+i)==='done').length;
+    // Broji završene lekcije iz svih nivoa
+    let totalCompleted = 0;
+    let totalLessons = 0;
+    
+    // Proveri sve nivoe
+    const levels = ['beginner', 'intermediate', 'advanced'];
+    levels.forEach(level => {
+      if (lessonsData[level]) {
+        const levelLessons = lessonsData[level].length;
+        totalLessons += levelLessons;
+        
+        // Broji završene lekcije za ovaj nivo
+        for (let i = 0; i < levelLessons; i++) {
+          if (localStorage.getItem(`lesson_${level}_${i}`) === 'done') {
+            totalCompleted++;
+          }
+        }
+      } else {
+        // Ako nivo nije učitan, dodaj default broj lekcija (15 za svaki nivo)
+        totalLessons += 15;
+        
+        // Broji završene lekcije za ovaj nivo iz localStorage
+        for (let i = 0; i < 15; i++) {
+          if (localStorage.getItem(`lesson_${level}_${i}`) === 'done') {
+            totalCompleted++;
+          }
+        }
+      }
+    });
+    
     const quizData = JSON.parse(localStorage.getItem('quizStats')||'{}');
     const totalAnswered = quizData.answered||0;
     const totalCorrect = quizData.correct||0;
     const accuracy = totalAnswered ? Math.round(100*totalCorrect/totalAnswered) : 0;
     
     if (document.getElementById('completed-lessons')) {
-      document.getElementById('completed-lessons').textContent = completed;
-      document.getElementById('total-lessons').textContent = lessonCount;
+      document.getElementById('completed-lessons').textContent = totalCompleted;
+      document.getElementById('total-lessons').textContent = totalLessons;
       document.getElementById('quiz-accuracy').textContent = accuracy + '%';
     }
   }
@@ -2196,6 +2650,363 @@
     }
     
     localStorage.setItem('darkMode', isDark);
+  }
+
+  // Function to check if all lessons in a level are completed
+  function areAllLessonsCompleted(level) {
+    if (!lessonsData[level]) return false;
+    
+    const totalLessons = lessonsData[level].length;
+    let completedCount = 0;
+    
+    for (let i = 0; i < totalLessons; i++) {
+      if (localStorage.getItem(`lesson_${level}_${i}`) === 'done') {
+        completedCount++;
+      }
+    }
+    
+    return completedCount === totalLessons;
+  }
+
+  // Function to check if level is completed (passed advanced quiz)
+  function isLevelCompleted(level) {
+    return localStorage.getItem(`level_${level}_completed`) === 'true';
+  }
+
+  function startAdvancedQuiz(level) {
+    // Create modal overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    
+    // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content menu-modal';
+    modalContent.style.maxWidth = '500px';
+    
+    // Create modal header
+    const modalHeader = document.createElement('div');
+    modalHeader.className = 'modal-header';
+    modalHeader.innerHTML = `
+      <div class="modal-title">🏆 Napredni kviz: ${level.charAt(0).toUpperCase() + level.slice(1)} nivo</div>
+      <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">×</button>
+    `;
+    
+    // Create modal body
+    const modalBody = document.createElement('div');
+    modalBody.className = 'modal-body';
+    
+    // Append header and body to modal content
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modalOverlay.appendChild(modalContent);
+    
+    // Add modal to body
+    document.body.appendChild(modalOverlay);
+    
+    // Close modal when clicking outside
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.remove();
+      }
+    });
+
+    // Get all phrases from the level
+    const allPhrases = [];
+    lessonsData[level].forEach(lesson => {
+      lesson.phrases.forEach(phrase => {
+        allPhrases.push({
+          ...phrase,
+          lessonTitle: lesson.title
+        });
+      });
+    });
+
+    let correct = 0;
+    let current = 0;
+    const total = 20;
+    const used = [];
+    const selectedPhrases = [];
+
+    // Randomly select 20 phrases
+    while (selectedPhrases.length < 20 && allPhrases.length > 0) {
+      const randomIndex = Math.floor(Math.random() * allPhrases.length);
+      const phrase = allPhrases.splice(randomIndex, 1)[0];
+      selectedPhrases.push(phrase);
+    }
+
+    function showAdvancedQuestion() {
+      if (current >= total) {
+        const resultDiv = document.createElement('div');
+        resultDiv.className = 'quiz-result';
+        
+        const percentage = Math.round((correct / total) * 100);
+        
+        // Determine result class based on score (80% to pass)
+        if (percentage >= 80) {
+          resultDiv.classList.add('excellent');
+          resultDiv.innerHTML = `
+            🎉 Čestitamo! Rezultat: <strong>${correct}/${total} (${percentage}%)</strong>
+            <div class="quiz-feedback">Uspešno ste završili ${level} nivo!</div>
+            <div style="margin-top: 1rem; padding: 1rem; background: #dcfce7; border-radius: 10px; border: 2px solid #10b981;">
+              <strong>🏆 Nivo završen!</strong><br>
+              Možete nastaviti sa sledećim nivoom ili ponoviti ovaj nivo.
+            </div>
+          `;
+          localStorage.setItem(`level_${level}_completed`, 'true');
+          updateProgress(lessonCount);
+          loadLessons(currentLevel); // Refresh to show level completion
+          updateLevelCompletionIndicators(); // Update level indicators
+        } else {
+          resultDiv.classList.add('poor');
+          resultDiv.innerHTML = `
+            😔 Rezultat: <strong>${correct}/${total} (${percentage}%)</strong>
+            <div class="quiz-feedback">Potrebno je ${Math.ceil(total * 0.8)} tačnih odgovora (80%) da biste završili nivo. Pokušajte ponovo!</div>
+          `;
+        }
+        
+        modalBody.innerHTML = '';
+        modalBody.appendChild(resultDiv);
+        
+        // Add close button
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = 'Zatvori kviz';
+        closeBtn.className = 'quiz-close-btn';
+        closeBtn.onclick = () => {
+          modalOverlay.remove();
+        };
+        modalBody.appendChild(closeBtn);
+        
+        return;
+      }
+
+      const q = selectedPhrases[current];
+      const answers = [q.sr];
+      
+      // Get 3 random wrong answers from other phrases
+      const otherPhrases = selectedPhrases.filter(p => p.sr !== q.sr);
+      while (answers.length < 4 && otherPhrases.length > 0) {
+        const randomIndex = Math.floor(Math.random() * otherPhrases.length);
+        const fake = otherPhrases.splice(randomIndex, 1)[0].sr;
+        if (!answers.includes(fake)) answers.push(fake);
+      }
+      
+      // If we don't have enough wrong answers, add some generic ones
+      const genericAnswers = [
+        'Ne znam',
+        'Nije tačno',
+        'Možda',
+        'Verovatno ne'
+      ];
+      
+      while (answers.length < 4) {
+        const generic = genericAnswers[Math.floor(Math.random() * genericAnswers.length)];
+        if (!answers.includes(generic)) answers.push(generic);
+      }
+      
+      answers.sort(() => Math.random() - 0.5);
+
+      modalBody.innerHTML = '';
+      
+      // Add quiz header with progress
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'quiz-header';
+      headerDiv.innerHTML = `
+        <div class="quiz-title">Pitanje ${current + 1} od ${total}</div>
+        <div class="quiz-progress">${correct} tačnih</div>
+      `;
+      modalBody.appendChild(headerDiv);
+      
+      const questionDiv = document.createElement('div');
+      questionDiv.className = 'quiz-question';
+      questionDiv.innerHTML = `<strong>${q.eng}</strong>`;
+      modalBody.appendChild(questionDiv);
+      
+      const optionsDiv = document.createElement('div');
+      optionsDiv.className = 'quiz-options';
+      
+      answers.forEach(ans => {
+        const btn = document.createElement('button');
+        btn.textContent = ans;
+        btn.className = 'quiz-option';
+        btn.onclick = () => {
+          if (ans === q.sr) {
+            correct++;
+            btn.classList.add('correct');
+          } else {
+            btn.classList.add('incorrect');
+          }
+          
+          // Disable all buttons and add disabled class
+          document.querySelectorAll('.quiz-option').forEach(option => {
+            option.classList.add('disabled');
+            option.style.pointerEvents = 'none';
+          });
+          
+          // Update progress in header
+          const progressDiv = modalBody.querySelector('.quiz-progress');
+          if (progressDiv) {
+            progressDiv.textContent = `${correct} tačnih`;
+          }
+          
+          setTimeout(() => {
+            current++;
+            showAdvancedQuestion();
+          }, 1500);
+        };
+        optionsDiv.appendChild(btn);
+      });
+      
+      modalBody.appendChild(optionsDiv);
+    }
+
+    showAdvancedQuestion();
+  }
+
+  // Initialize with beginner level
+  document.addEventListener('DOMContentLoaded', function() {
+    // Set beginner as active by default
+    document.querySelector('.level-btn').classList.add('active');
+    loadLessons('beginner');
+    
+    // Update level completion indicators
+    setTimeout(() => {
+      updateLevelCompletionIndicators();
+    }, 1000); // Wait for lessons to load
+  });
+
+  // Update notification functions
+  function showUpdateNotification() {
+    const notification = document.getElementById('updateNotification');
+    notification.style.display = 'block';
+    
+    // Auto-hide after 10 seconds
+    setTimeout(() => {
+      hideUpdateNotification();
+    }, 10000);
+  }
+
+  function hideUpdateNotification() {
+    const notification = document.getElementById('updateNotification');
+    notification.style.display = 'none';
+  }
+
+  function updateApp() {
+    // Show loading state
+    const updateBtn = document.querySelector('.update-btn');
+    const originalText = updateBtn.textContent;
+    updateBtn.textContent = 'Ažuriranje...';
+    updateBtn.disabled = true;
+    
+    // Reload the app to get the new version
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  }
+
+  function checkForUpdates() {
+    // Check if service worker is available
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(registration => {
+        // Check for updates immediately when app loads
+        registration.update().then(() => {
+          console.log('Service Worker update check completed');
+        });
+        
+        // Listen for service worker updates
+        registration.addEventListener('updatefound', () => {
+          console.log('New service worker version found');
+          
+          // Wait for the new service worker to install
+          const newWorker = registration.installing;
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              // New version is ready, show notification
+              showUpdateNotification();
+            }
+          });
+        });
+      });
+    }
+    
+    // Also check for content updates by comparing file timestamps
+    checkContentUpdates();
+  }
+
+  function checkContentUpdates() {
+    // Add a timestamp to force cache refresh
+    const timestamp = Date.now();
+    
+    // Check if lessons files have been updated
+    fetch(`./lessons.json?v=${timestamp}`)
+      .then(response => response.json())
+      .then(data => {
+        // Compare with cached version
+        const cachedVersion = localStorage.getItem('lessons_version');
+        const currentVersion = JSON.stringify(data).length; // Simple hash
+        
+        if (cachedVersion && cachedVersion !== currentVersion.toString()) {
+          console.log('Content update detected');
+          showUpdateNotification();
+        }
+        
+        localStorage.setItem('lessons_version', currentVersion.toString());
+      })
+      .catch(error => {
+        console.log('Error checking for content updates:', error);
+      });
+  }
+
+  // Modal functions
+  function showResetModal() {
+    document.getElementById('resetModal').style.display = 'block';
+    
+    // Close modal when clicking outside
+    document.getElementById('resetModal').onclick = (e) => {
+      if (e.target.id === 'resetModal') {
+        closeResetModal();
+      }
+    };
+  }
+
+  function closeResetModal() {
+    document.getElementById('resetModal').style.display = 'none';
+  }
+
+  function showSuccessModal(message) {
+    document.getElementById('successMessage').textContent = message;
+    document.getElementById('successModal').style.display = 'block';
+    
+    // Close modal when clicking outside
+    document.getElementById('successModal').onclick = (e) => {
+      if (e.target.id === 'successModal') {
+        closeSuccessModal();
+      }
+    };
+  }
+
+  function closeSuccessModal() {
+    document.getElementById('successModal').style.display = 'none';
+  }
+
+  function confirmReset() {
+    // Clear all progress and stats
+    const keysToRemove = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && (key.startsWith('lesson_') || key.startsWith('quiz_') || key.startsWith('level_') || key.startsWith('lessons_version'))) {
+        keysToRemove.push(key);
+      }
+    }
+    
+    keysToRemove.forEach(key => localStorage.removeItem(key));
+    
+    closeResetModal();
+    showSuccessModal('Sav napredak je uspešno obrisan. Aplikacija će se osvežiti.');
+    
+    // Reload the app
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   }
   </script>
 </body>

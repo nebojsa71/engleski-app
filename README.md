@@ -4,6 +4,7 @@ Aplikacija za učenje engleskog jezika namenjena putnicima. Aplikacija je naprav
 
 ## Funkcionalnosti
 
+- **Tri nivoa lekcija**: Osnovni, srednji i napredni nivo
 - **Lekcije**: Različite teme kao što su pozdrav, restoran, aerodrom, hotel, kupovina
 - **Frazni učenje**: Svaka lekcija sadrži korisne fraze na engleskom i srpskom
 - **Fonetska transkripcija**: Pomoć pri izgovoru
@@ -12,13 +13,31 @@ Aplikacija za učenje engleskog jezika namenjena putnicima. Aplikacija je naprav
 - **Praćenje napretka**: Vizuelni prikaz napretka kroz lekcije
 - **Offline funkcionalnost**: Radi bez interneta nakon prvog učitavanja
 
+## Nivoi lekcija
+
+### Osnovni nivo (Beginner)
+- Jednostavne fraze i osnovni vokabular
+- Temeljne situacije putovanja
+- 15 lekcija sa 8 fraza svaka
+
+### Srednji nivo (Intermediate)
+- Kompleksnije rečenice i gramatika
+- Napredniji vokabular i situacije
+- 15 lekcija sa 8 fraza svaka
+
+### Napredni nivo (Advanced)
+- Sofisticirani jezik i akademski termini
+- Profesionalne i formalne situacije
+- 15 lekcija sa 8 fraza svaka
+
 ## Kako koristiti
 
 1. Otvorite `index.html` u web browseru
-2. Kliknite na lekciju da je proširite
-3. Pregledajte fraze i kliknite "Listen" za audio
-4. Kliknite "Kviz" da testirate svoje znanje
-5. Završite kviz sa 4/5 tačnih odgovora da označite lekciju kao završenu
+2. Izaberite nivo (Osnovni, Srednji, Napredni)
+3. Kliknite na lekciju da je proširite
+4. Pregledajte fraze i kliknite "Listen" za audio
+5. Kliknite "Kviz" da testirate svoje znanje
+6. Završite kviz sa 4/5 tačnih odgovora da označite lekciju kao završenu
 
 ## Instalacija kao PWA
 
@@ -30,7 +49,9 @@ Aplikacija za učenje engleskog jezika namenjena putnicima. Aplikacija je naprav
 ## Struktura fajlova
 
 - `index.html` - Glavna HTML stranica
-- `lessons.json` - Podaci o lekcijama i frazama
+- `lessons.json` - Podaci o lekcijama osnovnog nivoa
+- `lessons_intermediate.json` - Podaci o lekcijama srednjeg nivoa
+- `lessons_advanced.json` - Podaci o lekcijama naprednog nivoa
 - `manifest.json` - PWA manifest
 - `service-worker.js` - Service worker za offline funkcionalnost
 - `icon-192.png` / `icon-512.png` - Ikone za PWA
