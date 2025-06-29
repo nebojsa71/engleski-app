@@ -1,4 +1,4 @@
-const cacheName = 'putujgovori-v8';
+const cacheName = 'putujgovori-v9';
 const assets = [
   './',
   './index.html',

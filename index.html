@@ -29,7 +29,7 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #ff6b6b 100%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
       color: #1f2937;
       line-height: 1.6;
@@ -1349,31 +1349,8 @@
     // Update installation status if menu is open
     updateInstallStatus();
     
-    // Show success message
-    const successMsg = document.createElement('div');
-    successMsg.innerHTML = '✅ Aplikacija je uspešno instalirana!';
-    successMsg.style.cssText = `
-      position: fixed;
-      top: 2rem;
-      right: 2rem;
-      background: #10b981;
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 600;
-      z-index: 10001;
-      animation: slideIn 0.5s ease;
-    `;
-    document.body.appendChild(successMsg);
-    
-    // Remove success message after 3 seconds
-    setTimeout(() => {
-      successMsg.style.opacity = '0';
-      successMsg.style.transform = 'translateX(100%)';
-      setTimeout(() => {
-        document.body.removeChild(successMsg);
-      }, 300);
-    }, 3000);
+    // Show success message using modal
+    showSuccessModal('🎉 Aplikacija je uspešno instalirana! Možete je pokrenuti sa desktop-a ili iz menija aplikacija.');
   });
 
   // Register service worker
@@ -2112,21 +2089,23 @@
       const status = checkInstallationStatus();
       
       if (status.isInstalled) {
-        alert('✅ Aplikacija je već instalirana i pokrenuta kao standalone aplikacija!');
+        showSuccessModal('✅ Aplikacija je već instalirana i pokrenuta kao standalone aplikacija!');
         return;
       }
       
       if (!status.canInstall) {
+        let message = '';
         switch (status.reason) {
           case 'not_https':
-            alert('⚠️ Instalacija zahteva HTTPS konekciju. Trenutno ste na: ' + location.protocol + '//' + location.hostname);
+            message = '⚠️ Instalacija zahteva HTTPS konekciju. Trenutno ste na: ' + location.protocol + '//' + location.hostname;
             break;
           case 'no_service_worker':
-            alert('❌ Instalacija nije podržana u vašem browseru. Pokušajte sa Chrome ili Edge.');
+            message = '❌ Instalacija nije podržana u vašem browseru. Pokušajte sa Chrome ili Edge.';
             break;
           default:
-            alert('ℹ️ Instalacija trenutno nije dostupna. Pokušajte ponovo kasnije.');
+            message = 'ℹ️ Instalacija trenutno nije dostupna. Pokušajte ponovo kasnije.';
         }
+        showSuccessModal(message);
         return;
       }
       
@@ -2136,13 +2115,15 @@
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
             console.log('User accepted the install prompt');
+            showSuccessModal('🎉 Aplikacija je uspešno instalirana! Možete je pokrenuti sa desktop-a ili iz menija aplikacija.');
           } else {
             console.log('User dismissed the install prompt');
+            showSuccessModal('ℹ️ Instalacija je otkazana. Možete pokušati ponovo kasnije.');
           }
           deferredPrompt = null;
         });
       } else {
-        alert('ℹ️ Instalacija trenutno nije dostupna. Pokušajte:\n\n1. Osvežite stranicu\n2. Koristite Chrome ili Edge browser\n3. Sačekajte nekoliko sekundi i pokušajte ponovo');
+        showSuccessModal('ℹ️ Instalacija trenutno nije dostupna. Pokušajte:\n\n1. Osvežite stranicu\n2. Koristite Chrome ili Edge browser\n3. Sačekajte nekoliko sekundi i pokušajte ponovo');
       }
     };
     
