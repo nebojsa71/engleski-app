@@ -2440,6 +2440,15 @@
     let timer = null;
     let timeLeft = 10;
     const timerInfo = resultDiv.querySelector('#timer-info');
+    let silenceTimer = null;
+    const SILENCE_LIMIT = 2000; // 2 sekunde
+
+    function resetSilenceTimer() {
+      if (silenceTimer) clearTimeout(silenceTimer);
+      silenceTimer = setTimeout(() => {
+        stopRecognition(true); // true = tišina
+      }, SILENCE_LIMIT);
+    }
 
     function startRecognition() {
       try {
@@ -2454,18 +2463,24 @@
             timerInfo.textContent = `⏱️ Preostalo vreme: ${timeLeft}s`;
           } else {
             timerInfo.textContent = '⏱️ Vreme za snimanje je isteklo.';
-            stopRecognition();
+            stopRecognition(false);
           }
         }, 1000);
+        resetSilenceTimer();
       } catch (error) {
         document.getElementById('recognition-result').innerHTML = `<p style=\"color:#ef4444;\">Greška pri pokretanju snimanja.</p>`;
       }
     }
 
-    function stopRecognition() {
+    function stopRecognition(isSilence) {
       if (timer) clearInterval(timer);
+      if (silenceTimer) clearTimeout(silenceTimer);
       recognition.stop();
       recognitionStarted = false;
+      if (isSilence) {
+        timerInfo.textContent = '⏱️ Snimanje je prekinuto zbog tišine.';
+        document.getElementById('recognition-result').innerHTML += '<p style="color:#ef4444;">Nije detektovan govor duže od 2 sekunde.</p>';
+      }
     }
 
     recognition.onstart = function() {
@@ -2473,6 +2488,7 @@
     };
 
     recognition.onresult = function(event) {
+      resetSilenceTimer();
       interimTranscript = '';
       finalTranscript = '';
       for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -2493,7 +2509,7 @@
             ${accuracy > 70 ? 'Odlično! 🎉' : 'Pokušajte ponovo! 💪'}
           </p>
         `;
-        stopRecognition();
+        stopRecognition(false);
       } else if (interimTranscript) {
         resultElement.innerHTML = `
           <p><strong>Čujem:</strong> ${interimTranscript}</p>
@@ -2503,6 +2519,7 @@
     };
 
     recognition.onerror = function(event) {
+      if (silenceTimer) clearTimeout(silenceTimer);
       const resultElement = document.getElementById('recognition-result');
       let errorMessage = 'Greška pri prepoznavanju govora.';
       switch(event.error) {
@@ -2535,13 +2552,16 @@
         <p style=\"color:#6b7280;font-size:0.9rem;\">Možete proveriti izgovor slušanjem originala.</p>
         <button onclick=\"speak('${expectedText.replace(/'/g,"\\'")}')\" style=\"background:#3b82f6;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;margin-top:0.5rem;\">🔊 Slušaj original</button>
       `;
-      stopRecognition();
+      stopRecognition(false);
     };
 
     recognition.onend = function() {
       recognitionStarted = false;
       if (timer) clearInterval(timer);
-      timerInfo.textContent = '⏱️ Snimanje je završeno.';
+      if (silenceTimer) clearTimeout(silenceTimer);
+      if (!timerInfo.textContent.includes('prekinuto')) {
+        timerInfo.textContent = '⏱️ Snimanje je završeno.';
+      }
     };
 
     // Pokreni snimanje automatski
