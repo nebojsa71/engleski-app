@@ -2989,6 +2989,18 @@
       window.location.reload();
     }, 2000);
   }
+
+  // Zagrijavanje SpeechSynthesis engine-a za brži prvi govor
+  window.addEventListener('load', function() {
+    if ('speechSynthesis' in window) {
+      // Pozovi getVoices da browser učita glasove
+      window.speechSynthesis.getVoices();
+      // Dummy nečujni govor
+      const utter = new SpeechSynthesisUtterance('');
+      utter.volume = 0;
+      window.speechSynthesis.speak(utter);
+    }
+  });
   </script>
 </body>
 </html>
