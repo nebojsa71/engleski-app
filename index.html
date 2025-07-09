@@ -2437,11 +2437,13 @@
     let finalTranscript = '';
     let interimTranscript = '';
     let recognitionStarted = false;
+    let shouldContinue = false;
 
     const toggleBtn = resultDiv.querySelector('#toggle-recognition');
 
     function startRecognition() {
       try {
+        shouldContinue = true;
         recognition.start();
         recognitionStarted = true;
         toggleBtn.textContent = '⏹️ Završi snimanje';
@@ -2452,6 +2454,7 @@
     }
 
     function stopRecognition() {
+      shouldContinue = false;
       recognition.stop();
       recognitionStarted = false;
       toggleBtn.textContent = '🎤 Započni snimanje';
@@ -2538,6 +2541,21 @@
     recognition.onend = function() {
       recognitionStarted = false;
       toggleBtn.textContent = '🎤 Započni snimanje';
+      // Ako korisnik nije ručno zaustavio, automatski restartuj snimanje
+      if (shouldContinue) {
+        setTimeout(() => {
+          if (shouldContinue) {
+            try {
+              recognition.start();
+              recognitionStarted = true;
+              toggleBtn.textContent = '⏹️ Završi snimanje';
+              document.getElementById('recognition-result').innerHTML = '<p style="color:#6b7280;">Slušam... Govorite sada!</p>';
+            } catch (e) {
+              // Ignoriši grešku ako je korisnik već prekinuo
+            }
+          }
+        }, 200);
+      }
     };
   }
 
