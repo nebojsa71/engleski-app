@@ -2398,8 +2398,8 @@
   function startSpeechRecognition(expectedText) {
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'en-US';
-    recognition.continuous = false;
-    recognition.interimResults = false;
+    recognition.continuous = true; // Sada je uvek true
+    recognition.interimResults = true;
     recognition.maxAlternatives = 1;
 
     // Mobile-specific settings
@@ -2444,11 +2444,16 @@
     let finalTranscript = '';
     let interimTranscript = '';
     let recognitionStarted = false;
+    let recognitionTimeout = null;
 
     recognition.onstart = function() {
       console.log('Speech recognition started');
       recognitionStarted = true;
       document.getElementById('recognition-result').innerHTML = '<p style="color:#6b7280;">Slušam... Govorite sada!</p>';
+      // Automatski prekid posle 5 sekundi
+      recognitionTimeout = setTimeout(() => {
+        recognition.stop();
+      }, 5000);
     };
 
     recognition.onresult = function(event) {
@@ -2519,10 +2524,12 @@
         <p style="color:#6b7280;font-size:0.9rem;">Možete proveriti izgovor slušanjem originala.</p>
         <button onclick="speak('${expectedText.replace(/'/g,"\\'")}')" style="background:#3b82f6;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;margin-top:0.5rem;">🔊 Slušaj original</button>
       `;
+      if (recognitionTimeout) clearTimeout(recognitionTimeout);
     };
 
     recognition.onend = function() {
       console.log('Speech recognition ended');
+      if (recognitionTimeout) clearTimeout(recognitionTimeout);
       if (!recognitionStarted) {
         document.getElementById('recognition-result').innerHTML = `
           <p style="color:#ef4444;">Speech recognition nije uspeo da se pokrene.</p>
