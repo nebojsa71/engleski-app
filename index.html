@@ -1356,7 +1356,7 @@
   // Register service worker
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js?v=2')
+      navigator.serviceWorker.register('./service-worker.js')
         .then(registration => {
           console.log('✅ ServiceWorker registered successfully:', registration);
           console.log('Service Worker state:', registration.active ? 'active' : 'not active');
@@ -1644,7 +1644,7 @@
     
     // Add quiz button
     const quizBtn = document.createElement('button');
-    quizBtn.innerHTML = '�� Započni kviz';
+    quizBtn.innerHTML = '🎯 Započni kviz';
     quizBtn.className = 'btn quiz-btn';
     quizBtn.style.cssText = `
       width: 100%;
@@ -2398,9 +2398,15 @@
   function startSpeechRecognition(expectedText) {
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'en-US';
-    recognition.continuous = true;
-    recognition.interimResults = true;
+    recognition.continuous = false;
+    recognition.interimResults = false;
     recognition.maxAlternatives = 1;
+
+    // Mobile-specific settings
+    if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      recognition.continuous = true;
+      recognition.interimResults = true;
+    }
 
     // Create modal overlay
     const modalOverlay = document.createElement('div');
@@ -2421,76 +2427,34 @@
     const resultDiv = document.createElement('div');
     resultDiv.className = 'speech-modal';
     resultDiv.innerHTML = `
-      <h3>🎤 Izgovorite frazu</h3>
+      <h3>🎤 Govorite sada...</h3>
       <p><strong>Očekivano:</strong> ${expectedText}</p>
       <div id="recognition-result" style="margin:1rem 0;padding:1rem;background:#f3f4f6;border-radius:8px;min-height:60px;">
-        <p style="color:#6b7280;">Snimanje počinje...</p>
+        <p style="color:#6b7280;">Slušam...</p>
       </div>
-      <div id="timer-info" style="margin-top:0.5rem;color:#6366f1;font-weight:600;text-align:center;"></div>
       <div style="margin-top:1rem;">
-        <button onclick="this.closest('.modal-overlay').remove()" style="background:#ef4444;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;">Zatvori</button>
+        <button onclick="this.closest('.modal-overlay').remove()" style="background:#ef4444;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;margin-right:0.5rem;">Zatvori</button>
+        <button id="restart-recognition" style="background:#3b82f6;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;">Ponovo</button>
       </div>
     `;
+    
     modalOverlay.appendChild(resultDiv);
     document.body.appendChild(modalOverlay);
 
     let finalTranscript = '';
     let interimTranscript = '';
     let recognitionStarted = false;
-    let timer = null;
-    let timeLeft = 10;
-    const timerInfo = resultDiv.querySelector('#timer-info');
-    let silenceTimer = null;
-    const SILENCE_LIMIT = 2000; // 2 sekunde
-
-    function resetSilenceTimer() {
-      if (silenceTimer) clearTimeout(silenceTimer);
-      silenceTimer = setTimeout(() => {
-        stopRecognition(true); // true = tišina
-      }, SILENCE_LIMIT);
-    }
-
-    function startRecognition() {
-      try {
-        recognition.start();
-        recognitionStarted = true;
-        document.getElementById('recognition-result').innerHTML = '<p style="color:#6b7280;">Slušam... Govorite sada!</p>';
-        timeLeft = 10;
-        timerInfo.textContent = `⏱️ Preostalo vreme: ${timeLeft}s`;
-        timer = setInterval(() => {
-          timeLeft--;
-          if (timeLeft > 0) {
-            timerInfo.textContent = `⏱️ Preostalo vreme: ${timeLeft}s`;
-          } else {
-            timerInfo.textContent = '⏱️ Vreme za snimanje je isteklo.';
-            stopRecognition(false);
-          }
-        }, 1000);
-        resetSilenceTimer();
-      } catch (error) {
-        document.getElementById('recognition-result').innerHTML = `<p style=\"color:#ef4444;\">Greška pri pokretanju snimanja.</p>`;
-      }
-    }
-
-    function stopRecognition(isSilence) {
-      if (timer) clearInterval(timer);
-      if (silenceTimer) clearTimeout(silenceTimer);
-      recognition.stop();
-      recognitionStarted = false;
-      if (isSilence) {
-        timerInfo.textContent = '⏱️ Snimanje je prekinuto zbog tišine.';
-        document.getElementById('recognition-result').innerHTML += '<p style="color:#ef4444;">Nije detektovan govor duže od 2 sekunde.</p>';
-      }
-    }
 
     recognition.onstart = function() {
-      // UI već ažuriran u startRecognition
+      console.log('Speech recognition started');
+      recognitionStarted = true;
+      document.getElementById('recognition-result').innerHTML = '<p style="color:#6b7280;">Slušam... Govorite sada!</p>';
     };
 
     recognition.onresult = function(event) {
-      resetSilenceTimer();
       interimTranscript = '';
       finalTranscript = '';
+      
       for (let i = event.resultIndex; i < event.results.length; i++) {
         const transcript = event.results[i][0].transcript;
         if (event.results[i].isFinal) {
@@ -2499,6 +2463,7 @@
           interimTranscript += transcript;
         }
       }
+      
       const resultElement = document.getElementById('recognition-result');
       if (finalTranscript) {
         const accuracy = calculateSimilarity(finalTranscript.toLowerCase(), expectedText.toLowerCase());
@@ -2509,7 +2474,7 @@
             ${accuracy > 70 ? 'Odlično! 🎉' : 'Pokušajte ponovo! 💪'}
           </p>
         `;
-        stopRecognition(false);
+        recognition.stop();
       } else if (interimTranscript) {
         resultElement.innerHTML = `
           <p><strong>Čujem:</strong> ${interimTranscript}</p>
@@ -2519,9 +2484,10 @@
     };
 
     recognition.onerror = function(event) {
-      if (silenceTimer) clearTimeout(silenceTimer);
+      console.error('Speech recognition error:', event.error);
       const resultElement = document.getElementById('recognition-result');
       let errorMessage = 'Greška pri prepoznavanju govora.';
+      
       switch(event.error) {
         case 'no-speech':
           errorMessage = 'Nije detektovan govor. Pokušajte ponovo i govorite jasnije.';
@@ -2547,27 +2513,46 @@
         default:
           errorMessage = `Greška: ${event.error}`;
       }
+      
       resultElement.innerHTML = `
-        <p style=\"color:#ef4444;\">${errorMessage}</p>
-        <p style=\"color:#6b7280;font-size:0.9rem;\">Možete proveriti izgovor slušanjem originala.</p>
-        <button onclick=\"speak('${expectedText.replace(/'/g,"\\'")}')\" style=\"background:#3b82f6;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;margin-top:0.5rem;\">🔊 Slušaj original</button>
+        <p style="color:#ef4444;">Speech recognition nije dostupan.</p>
+        <p style="color:#6b7280;font-size:0.9rem;">Možete proveriti izgovor slušanjem originala.</p>
+        <button onclick="speak('${expectedText.replace(/'/g,"\\'")}')" style="background:#3b82f6;color:white;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;margin-top:0.5rem;">🔊 Slušaj original</button>
       `;
-      stopRecognition(false);
     };
 
     recognition.onend = function() {
-      recognitionStarted = false;
-      if (timer) clearInterval(timer);
-      if (silenceTimer) clearTimeout(silenceTimer);
-      if (!timerInfo.textContent.includes('prekinuto')) {
-        timerInfo.textContent = '⏱️ Snimanje je završeno.';
+      console.log('Speech recognition ended');
+      if (!recognitionStarted) {
+        document.getElementById('recognition-result').innerHTML = `
+          <p style="color:#ef4444;">Speech recognition nije uspeo da se pokrene.</p>
+          <p style="color:#6b7280;font-size:0.9rem;">Pokušajte ponovo.</p>
+        `;
       }
     };
 
-    // Pokreni snimanje automatski
+    // Restart button functionality
+    document.getElementById('restart-recognition').onclick = () => {
+      recognition.stop();
+      setTimeout(() => {
+        recognitionStarted = false;
+        recognition.start();
+        document.getElementById('recognition-result').innerHTML = '<p style="color:#6b7280;">Slušam...</p>';
+      }, 100);
+    };
+
+    // Start recognition with a small delay
     setTimeout(() => {
-      startRecognition();
-    }, 400);
+      try {
+        recognition.start();
+      } catch (error) {
+        console.error('Failed to start recognition:', error);
+        document.getElementById('recognition-result').innerHTML = `
+          <p style="color:#ef4444;">Greška pri pokretanju speech recognition-a.</p>
+          <p style="color:#6b7280;font-size:0.9rem;">Pokušajte ponovo.</p>
+        `;
+      }
+    }, 500);
   }
 
   function calculateSimilarity(str1, str2) {
